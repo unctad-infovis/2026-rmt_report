@@ -51,7 +51,7 @@ function Footer({ content = {}, reportUrl = '' }) {
           <div className="footer_element">
             <div className="footer_content">
               {video_url && (
-                <>
+                <div className="anchor_videos">
                   <h3>Watch the video report</h3>
                   <VideoEmbed title={video_title || 'Video'} url={video_url} />
                   {languageLinks.length > 0 && (
@@ -67,7 +67,7 @@ function Footer({ content = {}, reportUrl = '' }) {
                       ))}
                     </p>
                   )}
-                </>
+                </div>
               )}
               {pressVideos.length > 0 && (
                 <section className="anchor_press press_conference" aria-labelledby="press-conference-heading">

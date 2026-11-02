@@ -4,7 +4,7 @@ import { resolveAsset } from '@unctad-infovis/general-tools/helpers/BasePath.js'
 
 import './Header.css';
 
-function Header({ bg_image_url, chapters, full_report_url, overview_image_url, overview_title, overview_url, subtitle, title, year }) {
+function Header({ bg_image_url, chapters, full_report_url, has_press, has_videos, overview_image_url, overview_title, overview_url, subtitle, title, year }) {
   const scrollTo = selector => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.appRef.current.querySelector(selector)?.scrollIntoView({
@@ -28,9 +28,9 @@ function Header({ bg_image_url, chapters, full_report_url, overview_image_url, o
             <ButtonShare url={window.location.href} defaultOpen position="static" iconBg="rgba(0,0,0,0.45)" iconColor="#fff" size={36} />
           </h3>
           <div className="download_buttons_container">
-            <ButtonAnchor className="full_report" url={full_report_url} text="Full report" />
-            <ButtonAnchor url={'.anchor_videos'} text="Videos" />
-            <ButtonAnchor url={'.anchor_press'} text="Press" />
+            {full_report_url && <ButtonAnchor className="full_report" url={full_report_url} text="Full report" />}
+            {has_videos && <ButtonAnchor url={'.anchor_videos'} text="Videos" />}
+            {has_press && <ButtonAnchor url={'.anchor_press'} text="Press" />}
           </div>
           <div className="container_chapters_navigation">
             <div className="chapter_card overview_card">

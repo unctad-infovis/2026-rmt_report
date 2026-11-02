@@ -36,16 +36,16 @@
         width: 100%;
       }
       &:focus-visible {
-        outline: 3px solid #ed1847;
+        outline: 3px solid var(--main-color);
         outline-offset: 3px;
       }
       &:hover .intro_video_play_icon {
-        background: #c4123b;
+        background: var(--secondary-color);
       }
     }
     .intro_video_play_icon {
       align-items: center;
-      background: #ed1847;
+      background: var(--main-color);
       border-radius: 50%;
       color: #fff;
       display: flex;

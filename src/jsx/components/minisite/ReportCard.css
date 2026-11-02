@@ -12,7 +12,7 @@
   .report_card_content {
     padding: 20px 16px;
     .report_card_label {
-      color: var(--un-color-red);
+      color: var(--main-color);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.12em;
