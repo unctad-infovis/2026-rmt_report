@@ -1,0 +1,13 @@
+#app-root-2026-rmt_report .app {
+  .container_chapter {
+    border-bottom: 0;
+    h3,
+    p,
+    blockquote,
+    ol,
+    ul {
+      opacity: 1;
+      transition: none;
+    }
+  }
+}

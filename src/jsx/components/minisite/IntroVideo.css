@@ -1,0 +1,101 @@
+#app-root-2026-rmt_report .app .intro_media {
+  align-items: stretch;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  margin: 24px auto 32px;
+  max-width: 920px;
+  width: 100%;
+  .intro_video_panel {
+    align-self: start;
+    background: #f3f8fd;
+    min-width: 0;
+  }
+  .intro_video_frame {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    width: 100%;
+    iframe,
+    .intro_video_play {
+      border: 0;
+      display: block;
+      height: 100%;
+      inset: 0;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      width: 100%;
+    }
+    .intro_video_play {
+      background: #000;
+      cursor: pointer;
+      img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+      &:focus-visible {
+        outline: 3px solid #ed1847;
+        outline-offset: 3px;
+      }
+      &:hover .intro_video_play_icon {
+        background: #c4123b;
+      }
+    }
+    .intro_video_play_icon {
+      align-items: center;
+      background: #ed1847;
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      font-size: 28px;
+      height: 64px;
+      justify-content: center;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+    }
+  }
+  .intro_video_languages {
+    color: #000;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 16px;
+    a {
+      color: #0077b8;
+    }
+  }
+  @media (min-width: 901px) {
+    .report_card {
+      contain: size;
+      display: flex;
+      flex-direction: column;
+      .report_card_cover {
+        flex: 1 1 0;
+        min-height: 0;
+        object-fit: contain;
+      }
+      .report_card_content {
+        flex: 0 0 auto;
+      }
+    }
+  }
+  @media (max-width: 900px) {
+    grid-template-columns: minmax(0, 1fr);
+    .report_card {
+      align-items: center;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      .report_card_cover {
+        max-width: 180px;
+      }
+      .report_card_content {
+        min-width: 0;
+      }
+    }
+  }
+}

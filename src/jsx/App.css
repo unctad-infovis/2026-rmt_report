@@ -1,0 +1,361 @@
+/*
+ * The shared minisite package provides the base chapter and takeaway frame.
+ * Project overrides below set the RMT column, typography and red theme.
+ */
+#app-root-2026-rmt_report .app {
+  h3,
+  h4,
+  p,
+  ul {
+    padding: 0;
+  }
+  ul {
+    box-sizing: border-box;
+    font-size: var(--un-font-size-normal);
+    font-weight: var(--un-font-weight-normal);
+    line-height: 1.6;
+    margin: 0 auto 24px;
+    max-width: var(--un-column-width);
+  }
+  p,
+  ul {
+    a {
+      color: #000;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+      &:focus-visible {
+        outline: 2px solid var(--un-color-blue-darkest);
+        outline-offset: 2px;
+      }
+    }
+  }
+  .height_100vh {
+    min-height: 100svh;
+  }
+  .container_chapter {
+    background: #fff;
+    border-bottom: 0;
+    box-sizing: border-box;
+    padding: 40px 16px;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    > p,
+    > h3,
+    > h4,
+    > ul,
+    > ol,
+    > figure,
+    > .highlight_container,
+    > .two_column {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: var(--un-column-width);
+      width: 100%;
+    }
+    > p {
+      font-size: clamp(var(--un-font-size-normal), 1.46vw, 21px);
+      font-weight: var(--un-font-weight-normal);
+      line-height: 1.6;
+    }
+    > h4 {
+      color: #000;
+      font-size: clamp(var(--un-font-size-xl), 2.1vw, var(--un-font-size-xxl));
+      font-weight: var(--un-font-weight-bold);
+      line-height: 1.3;
+    }
+    > h3 {
+      color: var(--un-color-red-text-dark);
+      font-size: var(--un-font-size-xl);
+      font-weight: var(--un-font-weight-bold);
+      line-height: 1.3;
+    }
+    > figure {
+      margin-bottom: 24px;
+      max-width: var(--un-column-width);
+    }
+    > .two_column {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    > .two_column:has(> .container_chart_data_wrapper) {
+      margin-block: 48px;
+    }
+    > .two_column > figure {
+      flex: 1 1 0;
+      margin: 0;
+      max-width: none;
+      min-width: 0;
+      padding: 0;
+    }
+    > .container_chart_data_wrapper {
+      margin: 48px auto;
+      max-width: var(--un-column-width);
+      padding: 0;
+    }
+    .highlight_container {
+      --highlight-padding: clamp(24px, 3vw, 40px);
+      background: var(--un-color-blue);
+      border-radius: 0;
+      box-sizing: border-box;
+      color: #fff;
+      margin-bottom: 40px;
+      margin-top: 40px;
+      max-width: var(--un-column-width);
+      padding: var(--highlight-padding);
+      h3 {
+        color: inherit;
+        font-size: var(--un-font-size-xxs);
+        font-weight: var(--un-font-weight-bolder);
+        letter-spacing: 0.1em;
+        line-height: var(--un-line-height-normal);
+        margin: 0 0 16px;
+        text-transform: uppercase;
+      }
+      p {
+        color: inherit;
+        font-size: clamp(var(--un-font-size-normal), 1.7vw, 25px);
+        font-weight: var(--un-font-weight-bold);
+        line-height: 1.4;
+        margin: 0;
+        max-width: none;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        max-width: none;
+        padding: 0;
+        li {
+          border-top: 1px solid rgb(255 255 255 / 55%);
+          line-height: 1.5;
+          margin: 0;
+          min-height: 0;
+          padding: 16px 0 16px 42px;
+          position: relative;
+          &::before {
+            background-image: url('https://storage.unctad.org/shared-resources/icons/arrow_yellow.png');
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            content: '';
+            display: block;
+            height: 26px;
+            left: 0;
+            position: absolute;
+            top: 16px;
+            width: 26px;
+          }
+          strong {
+            font-weight: var(--un-font-weight-bold);
+          }
+          &:first-child {
+            border-top: 0;
+          }
+        }
+      }
+      &.calls_to_action h3 {
+        font-size: var(--un-font-size-xxl);
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      /* "The takeaway" label: red bar flush with the box edge, as in the report's "In numbers" pages */
+      &:not(.calls_to_action) {
+        background: var(--un-color-blue-text-dark);
+      }
+      &:not(.calls_to_action) h3 {
+        align-items: center;
+        background: var(--un-color-red);
+        display: flex;
+        font-size: clamp(var(--un-font-size-xl), 2.4vw, var(--un-font-size-xxxl));
+        font-weight: var(--un-font-weight-boldest);
+        gap: 0.45em;
+        letter-spacing: 0;
+        line-height: 1.1;
+        margin: 0 0 24px calc(-1 * var(--highlight-padding));
+        padding: 0.3em 1em 0.3em var(--highlight-padding);
+        width: fit-content;
+        &::before {
+          background: var(--un-color-blue-text-dark);
+          content: '';
+          flex: 0 0 auto;
+          height: 0.8em;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='70 105 230 215'><path d='M76.3,317.4l107.9-106.4-107-102.2h92.2s117.8,102.3,117.8,102.3l-110,106.4h-100.9v-.1Z'/></svg>") no-repeat center / contain;
+          width: 0.8em;
+        }
+      }
+    }
+    figure.quote {
+      margin-bottom: 40px;
+      margin-top: 40px;
+      max-width: var(--un-column-width);
+      blockquote {
+        margin: 0;
+        padding: 0;
+        &:before {
+          background-color: var(--un-color-blue);
+          background-image: none;
+          bottom: 0;
+          display: block;
+          height: auto;
+          left: -24px;
+          top: 0;
+          width: 4px;
+        }
+        .quote {
+          font-size: clamp(var(--un-font-size-xl), 2.2vw, 32px);
+          font-style: normal;
+          font-weight: var(--un-font-weight-bold);
+          line-height: 1.4;
+          margin-bottom: 20px;
+        }
+        .author {
+          font-size: var(--un-font-size-normal);
+          line-height: 1.5;
+          .name {
+            display: block;
+            font-weight: var(--un-font-weight-bolder);
+          }
+        }
+      }
+    }
+  }
+  .container_side_scrolling_text {
+    view-timeline: --side-scroll-overlay block;
+    &:has(> .header) .background {
+      /* biome-ignore lint/complexity/noImportantStyles: The shared component sets opacity inline from scroll state. */
+      opacity: 1 !important;
+      &::after {
+        background: var(--un-color-blue);
+        content: '';
+        inset: 0;
+        opacity: 0.7;
+        pointer-events: none;
+        position: absolute;
+        /* Overlay fades in with the first text and out with the last one; static fallback elsewhere */
+        @supports (animation-timeline: view()) {
+          @media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+            animation: side-scroll-overlay linear both;
+            animation-range: cover 0% cover 100%;
+            animation-timeline: --side-scroll-overlay;
+          }
+        }
+      }
+    }
+    .header {
+      color: #fff;
+      font-size: var(--un-font-size-xxs);
+      font-weight: var(--un-font-weight-bolder);
+      left: max(16px, calc((100vw - var(--un-column-width)) / 2));
+      letter-spacing: 0.1em;
+      line-height: var(--un-line-height-normal);
+      text-transform: uppercase;
+    }
+    .container_scrolling_text {
+      min-width: 0;
+      width: min(var(--un-column-width), calc(100vw - 32px));
+      .text {
+        color: #fff;
+        font-size: clamp(var(--un-font-size-xxl), 7vw, 66px);
+        font-weight: var(--un-font-weight-bolder);
+        line-height: 1.1;
+        max-width: var(--un-column-width);
+        overflow-wrap: anywhere;
+        padding: 0;
+        @media (max-width: 700px) {
+          font-size: clamp(var(--un-font-size-xxl), 8vw, var(--un-font-size-xxxl));
+        }
+      }
+    }
+  }
+  .container_progress_bar {
+    background: transparent;
+    height: 4px;
+    .section {
+      height: 4px;
+      .progress_bar {
+        background: var(--un-color-blue);
+        height: 4px;
+      }
+    }
+  }
+  .container_back_to_top {
+    animation: none;
+    button {
+      background-color: var(--un-color-yellow);
+      border: 1px solid var(--un-color-yellow);
+      box-shadow: none;
+      color: #000;
+      &:focus-visible {
+        outline: 3px solid var(--un-color-blue-darkest);
+        outline-offset: 3px;
+      }
+      &:hover {
+        background-color: var(--un-color-yellow-dark);
+        border-color: var(--un-color-yellow-dark);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #app-root-2026-rmt_report .app {
+    .container_chapter {
+      padding: 32px 16px;
+      > .two_column {
+        flex-direction: column;
+      }
+      figure.quote blockquote:before {
+        left: -16px;
+      }
+    }
+    .container_back_to_top {
+      display: block;
+      margin-right: 16px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #app-root-2026-rmt_report .app {
+    .container_side_scrolling_text {
+      align-items: stretch;
+      flex-direction: column;
+      /* biome-ignore lint/complexity/noImportantStyles: The shared component sets section height inline from its scroll story. */
+      height: auto !important;
+      justify-content: center;
+      min-height: 100svh;
+      padding: 64px 16px;
+      .container_scrolling_text {
+        height: auto;
+        min-width: 0;
+        /* biome-ignore lint/complexity/noImportantStyles: The shared component sets opacity inline from scroll state. */
+        opacity: 1 !important;
+        position: relative;
+        top: auto;
+        /* biome-ignore lint/complexity/noImportantStyles: The shared component sets transforms inline from scroll state. */
+        transform: none !important;
+        width: 100%;
+        .text {
+          padding: 16px 0;
+        }
+      }
+    }
+  }
+}
+@keyframes side-scroll-overlay {
+  0%,
+  18% {
+    opacity: 0;
+  }
+  33%,
+  67% {
+    opacity: 0.7;
+  }
+  82%,
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,292 @@
+/* Chapter "In numbers" data sheet – joins onto the takeaway box above it */
+#app-root-2026-rmt_report .app {
+  .container_chapter > .highlight_container:has(+ .in_numbers) {
+    margin-bottom: 0;
+  }
+  .container_chapter > .in_numbers {
+    background: var(--un-color-blue-text-dark);
+    box-sizing: border-box;
+    color: #fff;
+    margin: 0 auto 40px;
+    max-width: var(--un-column-width);
+    padding: clamp(24px, 3vw, 40px);
+    width: 100%;
+    p {
+      margin: 0;
+      max-width: none;
+    }
+    .visually_hidden {
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+    .in_numbers_title {
+      align-items: center;
+      color: inherit;
+      display: flex;
+      font-size: var(--un-font-size-xxs);
+      font-weight: var(--un-font-weight-bolder);
+      gap: 10px;
+      letter-spacing: 0.1em;
+      line-height: var(--un-line-height-normal);
+      margin: 0 0 24px;
+      text-transform: uppercase;
+      .in_numbers_arrow {
+        background: url('https://storage.unctad.org/shared-resources/icons/arrow_yellow.png') 50% 50% / 100% 100% no-repeat;
+        height: 18px;
+        width: 18px;
+      }
+    }
+    .in_numbers_main {
+      align-items: flex-end;
+      display: flex;
+      gap: clamp(32px, 7vw, 96px);
+      justify-content: center;
+      .in_numbers_headline {
+        flex: 0 1 auto;
+        .in_numbers_value {
+          font-size: clamp(80px, 13vw, 150px);
+          font-variant-numeric: tabular-nums;
+          font-weight: var(--un-font-weight-boldest);
+          letter-spacing: -0.03em;
+          line-height: 0.9;
+          .in_numbers_unit {
+            color: var(--un-color-yellow);
+            font-size: 0.55em;
+            margin-left: 0.08em;
+          }
+        }
+        .in_numbers_text {
+          font-size: clamp(var(--un-font-size-normal), 1.6vw, var(--un-font-size-xl));
+          font-weight: var(--un-font-weight-bold);
+          line-height: 1.35;
+          margin-top: 16px;
+          max-width: 26ch;
+        }
+      }
+      .in_numbers_bars {
+        flex: 0 0 auto;
+        margin: 0;
+        ul {
+          align-items: flex-end;
+          display: flex;
+          gap: 10px;
+          height: 170px;
+          list-style: none;
+          margin: 0;
+          max-width: none;
+          padding: 0;
+          li {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: flex-end;
+            line-height: 1.2;
+            margin: 0;
+            min-height: 0;
+            width: 48px;
+            .bar_value {
+              font-size: var(--un-font-size-xs);
+              font-weight: var(--un-font-weight-bolder);
+              margin-bottom: 6px;
+            }
+            .bar {
+              background: rgb(255 255 255 / 45%);
+              height: calc(var(--bar-height) * 0.75);
+              transform: scaleY(0);
+              transform-origin: bottom;
+              transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+              width: 100%;
+              .visible & {
+                transform: scaleY(1);
+              }
+            }
+            .bar_label {
+              font-size: var(--un-font-size-xxs);
+              margin-top: 6px;
+            }
+            &.highlight .bar {
+              background: #fff;
+            }
+            &:nth-child(2) .bar {
+              transition-delay: 0.1s;
+            }
+            &:nth-child(3) .bar {
+              transition-delay: 0.2s;
+            }
+          }
+        }
+        figcaption {
+          color: #fff;
+          font-size: var(--un-font-size-xxs);
+          line-height: 1.35;
+          margin-top: 10px;
+          max-width: 170px;
+          opacity: 0.85;
+        }
+      }
+      .in_numbers_pair {
+        align-items: center;
+        align-self: center;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        gap: 16px;
+        margin: 0;
+        .pair_flags {
+          align-items: center;
+          display: flex;
+          .pair_flag {
+            border: 2px solid #fff;
+            box-sizing: border-box;
+            /* biome-ignore lint/complexity/noImportantStyles: CircleFlag sets its size inline. */
+            height: clamp(64px, 8vw, 88px) !important;
+            /* biome-ignore lint/complexity/noImportantStyles: CircleFlag sets its size inline. */
+            width: clamp(64px, 8vw, 88px) !important;
+          }
+          .pair_link {
+            border-top: 4px dotted #fff;
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+            width: 0;
+            .visible & {
+              width: clamp(28px, 4vw, 48px);
+            }
+          }
+        }
+        .pair_trend {
+          fill: none;
+          height: 40px;
+          stroke: var(--un-color-yellow);
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-width: 2.4;
+          width: 40px;
+        }
+      }
+      .in_numbers_share {
+        flex: 0 0 auto;
+        margin: 0;
+        width: min(240px, 100%);
+        .share_name {
+          align-items: center;
+          color: var(--un-color-yellow);
+          display: flex;
+          font-size: var(--un-font-size-xs);
+          font-weight: var(--un-font-weight-bolder);
+          gap: 8px;
+          margin-bottom: 8px;
+          .share_icon {
+            fill: none;
+            height: 22px;
+            stroke: #fff;
+            stroke-linejoin: round;
+            stroke-width: 1.8;
+            width: 22px;
+          }
+        }
+        .share_track {
+          background: rgb(255 255 255 / 30%);
+          height: 28px;
+          .share_bar {
+            align-items: center;
+            background: #fff;
+            box-sizing: border-box;
+            display: flex;
+            height: 100%;
+            justify-content: flex-end;
+            padding-right: 6px;
+            transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+            width: 0;
+            .visible & {
+              width: var(--share);
+            }
+            .share_value {
+              color: var(--un-color-blue-darkest);
+              font-size: var(--un-font-size-xs);
+              font-weight: var(--un-font-weight-bolder);
+            }
+          }
+        }
+        figcaption {
+          color: #fff;
+          font-size: var(--un-font-size-xxs);
+          line-height: 1.35;
+          margin-top: 10px;
+          opacity: 0.85;
+        }
+      }
+    }
+    .in_numbers_facts {
+      border-top: 1px solid rgb(255 255 255 / 35%);
+      display: grid;
+      gap: 24px clamp(20px, 3vw, 40px);
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      list-style: none;
+      margin: clamp(28px, 4vw, 44px) 0 0;
+      max-width: none;
+      padding: clamp(24px, 3vw, 36px) 0 0;
+      .fact {
+        line-height: 1.4;
+        margin: 0;
+        min-height: 0;
+        padding: 0;
+        &::before {
+          background: var(--un-color-yellow);
+          content: '';
+          display: block;
+          height: 3px;
+          margin-bottom: 16px;
+          width: 32px;
+        }
+        .fact_icon {
+          display: block;
+          fill: none;
+          height: 26px;
+          margin-bottom: 8px;
+          stroke: currentcolor;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-width: 1.8;
+          width: 26px;
+        }
+        .fact_value {
+          font-size: clamp(var(--un-font-size-xl), 2.4vw, var(--un-font-size-xxxl));
+          font-weight: var(--un-font-weight-bolder);
+          line-height: 1.15;
+          margin-bottom: 8px;
+          .fact_arrow {
+            color: var(--un-color-yellow);
+            margin: 0 0.25em;
+          }
+        }
+        .fact_text {
+          font-size: var(--un-font-size-xs);
+          opacity: 0.9;
+        }
+      }
+    }
+    @media (max-width: 600px) {
+      .in_numbers_main {
+        align-items: flex-start;
+        flex-direction: column;
+        .in_numbers_pair {
+          align-self: flex-start;
+        }
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .in_numbers_bars li .bar {
+        transform: none;
+        transition: none;
+      }
+      .pair_link,
+      .share_bar {
+        transition: none;
+      }
+    }
+  }
+}

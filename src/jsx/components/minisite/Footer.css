@@ -1,0 +1,187 @@
+#app-root-2026-rmt_report .app {
+  .footer_container {
+    background-color: #231f20;
+    color: #fff;
+    padding: clamp(40px, 5vw, 64px) 16px;
+    .footer_download {
+      margin: 0 auto 40px;
+      max-width: var(--un-column-width);
+      text-align: left;
+      a {
+        background-color: var(--un-color-yellow);
+        border: 0;
+        border-radius: 20px;
+        color: #000;
+        display: inline-block;
+        font-size: var(--un-font-size-normal);
+        font-weight: var(--un-font-weight-bolder);
+        padding: 12px 24px;
+        text-decoration: none;
+        &:hover {
+          background-color: var(--un-color-yellow-dark);
+        }
+        &:focus-visible {
+          outline: 3px solid #fff;
+          outline-offset: 3px;
+        }
+      }
+    }
+    h2 {
+      color: #fff;
+      font-size: var(--un-font-size-xxl);
+      font-weight: var(--un-font-weight-bolder);
+      letter-spacing: 0;
+      line-height: var(--un-line-height-small);
+      margin: 0 auto 32px;
+      max-width: var(--un-column-width);
+      text-align: left;
+      text-transform: none;
+    }
+    .footer_elements {
+      display: block;
+      margin: 0 auto;
+      max-width: var(--un-column-width);
+      .footer_element {
+        max-width: var(--un-column-width);
+        width: 100%;
+        .footer_content {
+          background: none;
+          border-radius: 0;
+          box-sizing: border-box;
+          color: #fff;
+          padding: 0;
+          width: 100%;
+          h3,
+          h4 {
+            color: #fff;
+            font-size: var(--un-font-size-xl);
+            font-weight: var(--un-font-weight-bolder);
+            letter-spacing: 0;
+            line-height: var(--un-line-height-normal);
+            margin: 32px 0 16px;
+            text-transform: none;
+          }
+          h4 {
+            font-size: var(--un-font-size-normal);
+          }
+          p {
+            color: #fff;
+            font-size: var(--un-font-size-normal);
+            line-height: 1.5;
+            margin: 8px 0 0;
+            max-width: 100%;
+            width: 100%;
+          }
+          .iframe_container {
+            margin-bottom: 12px;
+            &.iframe_16_9 {
+              padding-bottom: 56.25%;
+              position: relative;
+              width: 100%;
+              iframe {
+                border: 0;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+              }
+            }
+          }
+          .language_links {
+            color: #fff;
+            a {
+              color: #fff;
+              text-decoration: underline;
+              &:hover {
+                color: var(--un-color-yellow);
+              }
+              &:focus-visible {
+                outline: 2px solid var(--un-color-yellow);
+                outline-offset: 2px;
+              }
+            }
+          }
+          .language_links,
+          ul {
+            list-style: none;
+            margin: 8px 0 16px;
+            padding: 0;
+            li {
+              font-size: var(--un-font-size-xs);
+              line-height: 1.6;
+              a {
+                color: #fff;
+                text-decoration: underline;
+                &:hover {
+                  text-decoration: none;
+                }
+                &:focus-visible {
+                  outline: 2px solid var(--un-color-yellow);
+                  outline-offset: 2px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#app-root-2026-rmt_report .app .footer_container {
+  .press_conference {
+    scroll-margin-top: calc(var(--drupal-displace-offset-top, 0px) + 24px);
+  }
+  .press_video_grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    .press_video {
+      min-width: 0;
+      &:first-child {
+        grid-column: 1 / -1;
+      }
+      h4 {
+        margin: 12px 0 0;
+      }
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
+
+#app-root-2026-rmt_report .app .footer_container .press_video_frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  .press_video_blur {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    background-color: #ccc;
+    background-blend-mode: multiply;
+    z-index: 1;
+    transform: scale(1.1);
+  }
+  .press_video_foreground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    iframe {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+}

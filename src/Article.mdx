@@ -1,0 +1,177 @@
+{/*
+  ============================================================================
+  Review of Maritime Transport 2026 – minisite content
+  ----------------------------------------------------------------------------
+  This file is the whole narrative. It is authored in MDX: Markdown for the
+  copy, React components (passed in from App.jsx via `components`) for the
+  interactive / layout pieces. `props.meta` is `src/meta.json`.
+  ============================================================================
+*/}
+
+<Header
+  bg_image_url={props.meta.image_url}
+  chapters={props.meta.chapters}
+  full_report_url={props.meta.full_report_url}
+  overview_image_url={props.meta.overview_image_url}
+  overview_url={props.meta.overview_url}
+  subtitle={props.meta.subtitle}
+  title={props.meta.title}
+  year={<span>20<span>26</span></span>}
+/>
+
+{/*********************************************
+ *************** INTRO ************************
+ *********************************************/}
+
+<div className="container_chapter">
+  #### Intro headline placeholder.
+
+  {props.meta.footer.video_url && (
+    <div className="intro_media">
+      <IntroVideo url={props.meta.footer.video_url} title={props.meta.footer.video_title} poster_url={props.meta.image_url} languages={props.meta.footer.language_links} />
+      <ReportCard cover_url={props.meta.full_report_cover_url} report_url={props.meta.full_report_url} />
+    </div>
+  )}
+
+  Intro text placeholder.
+</div>
+
+<ProgressBar selector=".container_chapters" />
+<BackToTop selector=".container_header" />
+
+<div className="container_chapters">
+
+  {/*********************************************
+   *************** CHAPTER 1 *******************
+   *********************************************/}
+
+  <div className="container_chapter container_chapter_1">
+    <HeaderChapter
+      chapter_number={1}
+      image_url={props.meta.chapters[0].image_url}
+      pdf_url={props.meta.chapters[0].pdf_url}
+      subtitle={props.meta.chapters[0].subtitle}
+      title={props.meta.chapters[0].title}
+    />
+
+    <div className="highlight_container">
+      ### The takeaway
+
+      Takeaway placeholder.
+    </div>
+
+    Chapter 1 content placeholder.
+  </div>
+
+  {/*********************************************
+   *************** CHAPTER 2 *******************
+   *********************************************/}
+
+  <div className="container_chapter container_chapter_2">
+    <HeaderChapter
+      chapter_number={2}
+      image_url={props.meta.chapters[1].image_url}
+      pdf_url={props.meta.chapters[1].pdf_url}
+      subtitle={props.meta.chapters[1].subtitle}
+      title={props.meta.chapters[1].title}
+    />
+
+    <div className="highlight_container">
+      ### The takeaway
+
+      Takeaway placeholder.
+    </div>
+
+    Chapter 2 content placeholder.
+  </div>
+
+  {/*********************************************
+   *************** CHAPTER 3 *******************
+   *********************************************/}
+
+  <div className="container_chapter container_chapter_3">
+    <HeaderChapter
+      chapter_number={3}
+      image_url={props.meta.chapters[2].image_url}
+      pdf_url={props.meta.chapters[2].pdf_url}
+      subtitle={props.meta.chapters[2].subtitle}
+      title={props.meta.chapters[2].title}
+    />
+
+    <div className="highlight_container">
+      ### The takeaway
+
+      Takeaway placeholder.
+    </div>
+
+    Chapter 3 content placeholder.
+  </div>
+
+  {/*********************************************
+   *************** CHAPTER 4 *******************
+   *********************************************/}
+
+  <div className="container_chapter container_chapter_4">
+    <HeaderChapter
+      chapter_number={4}
+      image_url={props.meta.chapters[3].image_url}
+      pdf_url={props.meta.chapters[3].pdf_url}
+      subtitle={props.meta.chapters[3].subtitle}
+      title={props.meta.chapters[3].title}
+    />
+
+    <div className="highlight_container">
+      ### The takeaway
+
+      Takeaway placeholder.
+    </div>
+
+    Chapter 4 content placeholder.
+  </div>
+
+  {/*********************************************
+   *************** CHAPTER 5 *******************
+   *********************************************/}
+
+  <div className="container_chapter container_chapter_5">
+    <HeaderChapter
+      chapter_number={5}
+      image_url={props.meta.chapters[4].image_url}
+      pdf_url={props.meta.chapters[4].pdf_url}
+      subtitle={props.meta.chapters[4].subtitle}
+      title={props.meta.chapters[4].title}
+    />
+
+    <div className="highlight_container">
+      ### The takeaway
+
+      Takeaway placeholder.
+    </div>
+
+    Chapter 5 content placeholder.
+  </div>
+
+  {/*********************************************
+   *************** CHAPTER 6 *******************
+   *********************************************/}
+
+  <div className="container_chapter container_chapter_6">
+    <HeaderChapter
+      chapter_number={6}
+      image_url={props.meta.chapters[5].image_url}
+      pdf_url={props.meta.chapters[5].pdf_url}
+      subtitle={props.meta.chapters[5].subtitle}
+      title={props.meta.chapters[5].title}
+    />
+
+    <div className="highlight_container">
+      ### The takeaway
+
+      Takeaway placeholder.
+    </div>
+
+    Chapter 6 content placeholder.
+  </div>
+</div>
+
+<Footer content={props.meta.footer} reportUrl={props.meta.full_report_url} />

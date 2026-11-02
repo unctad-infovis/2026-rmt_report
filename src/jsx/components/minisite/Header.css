@@ -1,0 +1,287 @@
+#app-root-2026-rmt_report .app {
+  div.container_header_wrapper {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    --un-column-width: 1350px;
+    margin: auto;
+    @media (max-width: 1399px) {
+      --un-column-width: 1170px;
+    }
+    position: relative;
+    z-index: 2;
+    &::before {
+      background: linear-gradient(90deg, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 56%) 35%, rgb(0 0 0 / 28%) 62%, transparent 85%);
+      content: '';
+      inset: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+    .container_header {
+      align-content: space-between;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: auto;
+      max-width: var(--un-column-width);
+      min-height: 50vh;
+      padding-inline: 0;
+      width: 100%;
+      @media (max-width: 1399px) {
+        padding-inline: 10px;
+      }
+      .header_top {
+        box-sizing: border-box;
+        margin-bottom: 100px;
+        padding: 10px 0;
+        position: relative;
+        z-index: 1;
+        > h2 {
+          color: #fff;
+          font-size: var(--un-font-size-xxxl);
+          font-weight: var(--un-font-weight-boldest);
+          line-height: var(--un-line-height-smallest);
+          margin: 0;
+          max-width: 400px;
+          text-shadow: none;
+          @media (max-width: 700px) {
+            font-size: var(--un-font-size-xxl);
+            font-weight: var(--un-font-weight-bolder);
+            line-height: var(--un-line-height-smallest);
+            max-width: 350px;
+          }
+          .year {
+            span {
+              span {
+                color: var(--un-color-yellow);
+              }
+            }
+          }
+        }
+      }
+      .header_bottom {
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        padding: 10px 0;
+        position: relative;
+        width: 100%;
+        > h3 {
+          align-items: flex-start;
+          color: #fff;
+          display: flex;
+          flex-direction: column;
+          font-size: clamp(var(--un-font-size-xxxl), 5vw, var(--un-font-size-xxxxl));
+          font-weight: var(--un-font-weight-bolder);
+          gap: 12px;
+          line-height: var(--un-line-height-smallest);
+          margin: 0 0 20px;
+          max-width: 920px;
+          padding: 0;
+          text-shadow: none;
+          text-wrap: balance;
+          > div {
+            max-width: 10em;
+          }
+          @media (max-width: 700px) {
+            align-items: flex-start;
+            flex-direction: column;
+            font-size: var(--un-font-size-xxxl);
+            gap: 12px;
+            line-height: var(--un-line-height-small);
+            .share_wrapper {
+              flex-wrap: wrap;
+              max-width: 100%;
+              .share_panel {
+                flex-wrap: wrap;
+              }
+            }
+          }
+        }
+        .container_button_download {
+          display: inline-block;
+          p {
+            display: inline-block;
+            margin: 0 10px 0 0;
+            padding: 0;
+          }
+        }
+        .container_chapters_navigation {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 170px));
+          gap: 10px;
+          max-width: var(--un-column-width);
+          overflow-x: auto;
+          overscroll-behavior-inline: contain;
+          padding: 0 0 8px;
+          scroll-snap-type: x proximity;
+          .chapter_card {
+            position: relative;
+            &.overview_card {
+              --main-color: #009edb;
+              --secondary-color: #0077b8;
+            }
+            .chapter_card_action {
+              background: none;
+              border: 0;
+              border-radius: 0;
+              cursor: pointer;
+              inset: 0;
+              margin: 0;
+              padding: 0;
+              position: absolute;
+              z-index: 1;
+              &:focus-visible {
+                outline: 3px solid var(--un-color-yellow);
+                outline-offset: 3px;
+              }
+            }
+            background: none;
+            border: 0;
+            border-radius: 0;
+            cursor: pointer;
+            min-width: 0;
+            height: auto;
+            margin: 0;
+            outline: none;
+            padding: 0;
+            scroll-snap-align: start;
+            text-align: left;
+            &:focus-visible {
+              outline: 3px solid var(--un-color-yellow);
+              outline-offset: 3px;
+            }
+            .chapter_navigation {
+              align-items: stretch;
+              background-color: var(--main-color);
+              border: 5px solid var(--main-color);
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              margin: 0;
+              width: 100%;
+              .chapter_title {
+                background-color: var(--main-color);
+                box-sizing: border-box;
+                display: flex;
+                flex: 1;
+                min-height: 68px;
+                padding: 5px 5px 10px;
+                h3 {
+                  color: #fff;
+                  font-size: var(--un-font-size-normal);
+                  font-weight: var(--un-font-weight-bold);
+                  line-height: var(--un-line-height-normal);
+                  margin: 0;
+                  padding: 0;
+                }
+              }
+              .chapter_image {
+                background: transparent;
+                padding: 5px;
+                position: relative;
+                div {
+                  aspect-ratio: 1 / 1;
+                  background-position: 50% 50%;
+                  background-size: cover;
+                }
+              }
+              &.chapter_navigation_3 .chapter_image div {
+                background-position: 30% 50%;
+              }
+              .chapter_meta {
+                align-items: center;
+                background-color: var(--main-color);
+                display: flex;
+                justify-content: space-between;
+                padding: 5px 5px 0;
+                .chapter_label {
+                  color: #fff;
+                  font-size: 12px;
+                  font-weight: 700;
+                  letter-spacing: 0.12em;
+                  text-align: left;
+                  text-transform: uppercase;
+                  white-space: nowrap;
+                  line-height: var(--un-line-height-normal);
+                }
+                .chapter_download_button {
+                  color: #fff;
+                  font-size: 0;
+                  line-height: 0;
+                  flex-shrink: 0;
+                  position: relative;
+                  z-index: 2;
+                  &:focus-visible {
+                    outline: 2px solid #fff;
+                    outline-offset: 2px;
+                  }
+                  &:before {
+                    background-image: url('./icons/icon_download_white.png');
+                    background-size: 100%;
+                    content: '';
+                    display: block;
+                    height: 30px;
+                    opacity: 0.7;
+                    width: 30px;
+                  }
+                  &:hover:before {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+            &:hover {
+              .chapter_navigation {
+                background-color: var(--secondary-color);
+                border-color: var(--secondary-color);
+              }
+              .chapter_title,
+              .chapter_meta {
+                background-color: var(--secondary-color);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #app-root-2026-rmt_report .app div.container_header_wrapper .container_header {
+    padding: 0 10px;
+  }
+  #app-root-2026-rmt_report .app div.container_header_wrapper .container_header .header_bottom .container_chapters_navigation {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    scroll-snap-type: none;
+    .chapter_card {
+      flex: 0 0 auto;
+      width: 100%;
+      .chapter_navigation {
+        flex-direction: row;
+        width: 100%;
+        .chapter_meta {
+          gap: 5px;
+          order: 1;
+          padding: 0 5px;
+        }
+        .chapter_title {
+          flex: 1;
+          min-height: 0;
+          order: 2;
+          padding: 5px;
+        }
+        .chapter_image {
+          display: none;
+        }
+      }
+    }
+    .chapter_card + .chapter_card {
+      margin-top: 2px;
+    }
+  }
+}
