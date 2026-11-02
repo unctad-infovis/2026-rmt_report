@@ -18,7 +18,6 @@ with optional PDF download, a takeaway box, the narrative with Datawrapper
 charts, and calls to action. A footer links to the full report, video and press
 material.
 
-Status: skeleton. Content, images and URLs are placeholders (see `src/meta.json`).
 Developer handover notes and working rules are in [`CLAUDE.md`](CLAUDE.md).
 
 ## Embedding
