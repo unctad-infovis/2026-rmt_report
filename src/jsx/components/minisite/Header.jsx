@@ -34,6 +34,7 @@ function Header({ bg_image_url, chapters, full_report_url, has_press, has_videos
           </div>
           <div className="container_chapters_navigation">
             <div className="chapter_card overview_card">
+              {/* biome-ignore lint/a11y/useAnchorContent: overlay link, labelled via aria-label */}
               <a className="chapter_card_action" href={overview_url} target="_blank" rel="noreferrer" aria-label={`Open Overview PDF: ${overviewTitle}`} />
               <div className="chapter_navigation">
                 <div className="chapter_title">

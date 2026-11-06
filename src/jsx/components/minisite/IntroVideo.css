@@ -43,6 +43,7 @@
         background: var(--secondary-color);
       }
     }
+    /* biome-ignore lint/style/noDescendingSpecificity: intentional override order */
     .intro_video_play_icon {
       align-items: center;
       background: var(--main-color);
