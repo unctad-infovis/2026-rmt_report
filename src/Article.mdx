@@ -62,7 +62,22 @@
       Trade kept moving despite disruptions and shocks in 2026, often on longer, costlier routes. But some developing economies have few alternative routes or suppliers. Preparing better for future disruptions would help ensure goods reach markets on time and at a reasonable cost.
     </div>
 
-    {/* TODO: InNumbers data sheet (content to be decided). */}
+    <InNumbers
+      bars={[
+        { label: '2025', value: 1.9 },
+        { highlight: true, label: '2026', value: 0 },
+        { label: '2027', value: 3.2 }
+      ]}
+      barsCaption="Seaborne trade volume growth, per cent, 2025–2027. The 2026 and 2027 figures are forecasts."
+      facts={[
+        { icon: 'trend_down', text: 'Drop in tanker traffic through the Strait of Hormuz by tonnage by July 2026', value: '-95%' },
+        { icon: 'route', text: 'Projected rise in ton-miles in 2026, as cargo travels farther', value: '+1.5%' },
+        { icon: 'target', text: 'Share of Yemen’s seaborne wheat imports supplied by just one country in 2024', value: '90.2%' }
+      ]}
+      headline={37}
+      headlineText="Share of global seaborne crude oil trade that normally passes through the Strait of Hormuz"
+      headlineUnit="%"
+    />
 
     By late July 2026, tanker traffic through the Strait of Hormuz was still around 95% below normal, measured by tonnage. Disruption on this major route for oil and fertilizer can raise energy costs, strain manufacturing supply chains and make food more expensive to grow.
 
