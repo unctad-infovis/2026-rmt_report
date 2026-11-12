@@ -152,6 +152,9 @@
         .crude_months text {
           fill: var(--un-color-grey-dark);
           font-size: var(--un-font-size-xxs);
+          .crude_year {
+            font-weight: var(--un-font-weight-bold);
+          }
         }
         .crude_band {
           fill: var(--un-color-blue-light);
@@ -168,12 +171,12 @@
             opacity: 1;
           }
           line {
-            stroke: var(--un-color-blue-darkest);
+            stroke: var(--un-color-red);
             stroke-dasharray: 4 3;
             stroke-width: 2px;
           }
           text {
-            fill: var(--un-color-blue-darkest);
+            fill: var(--un-color-red);
             font-size: var(--un-font-size-xxs);
             font-weight: var(--un-font-weight-bold);
           }
@@ -201,8 +204,8 @@
             stroke: var(--un-color-blue);
             stroke-dasharray: 1;
             stroke-dashoffset: var(--line-offset);
-            stroke-linejoin: round;
-            stroke-width: 5px;
+            stroke-linejoin: miter;
+            stroke-width: 3px;
             transition: stroke-dashoffset 900ms;
           }
           &.red_sea path {

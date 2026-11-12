@@ -1,4 +1,4 @@
-import { bisector, line, scaleLinear, scaleUtc, utcFormat, utcMonth } from 'd3';
+import { bisector, curveLinear, line, scaleLinear, scaleUtc, utcFormat, utcMonth } from 'd3';
 import { useEffect, useId, useRef, useState } from 'react';
 import FocusChartStory from '../shared/FocusChartStory.jsx';
 import { AVERAGES, CSV, DATA, DISRUPTION_DATE, NOTE, RECOVERY } from './data.js';
@@ -89,7 +89,7 @@ const CrudeChart = ({ step }) => {
   const plotLeft = 36;
   const plotRight = chartWidth - 8;
   const plotTop = 14;
-  const plotBottom = height - 32;
+  const plotBottom = height - 46;
   const yMax = hasData ? Math.max(0.5, Math.ceil(Math.max(...DATA.map(row => Math.max(row[1], row[2]))) * 2) / 2) : 2.5;
   const x = scaleUtc()
     .domain(hasData ? [dates[0], dates[dates.length - 1]] : [toDate('2026-01-02'), toDate('2026-07-26')])
@@ -153,15 +153,20 @@ const CrudeChart = ({ step }) => {
                 <g key={value} className={value === 0 ? 'baseline' : ''}>
                   <line x1={plotLeft} x2={plotRight} y1={y(value)} y2={y(value)} />
                   <text x={plotLeft - 6} y={y(value) + 4} textAnchor="end">
-                    {value}
+                    {value.toFixed(1)}
                   </text>
                 </g>
               ))}
             </g>
             <g className="crude_months">
-              {monthTicks.map(month => (
-                <text key={month.getTime()} x={x(month)} y={height - 8} textAnchor="start">
+              {monthTicks.map((month, index) => (
+                <text key={month.getTime()} x={x(new Date(month.getTime() + 14 * 86400000))} y={height - 26} textAnchor="middle">
                   {monthFormat(month)}
+                  {index === 0 && (
+                    <tspan className="crude_year" x={x(new Date(month.getTime() + 14 * 86400000))} dy="16">
+                      {month.getUTCFullYear()}
+                    </tspan>
+                  )}
                 </text>
               ))}
             </g>
@@ -169,7 +174,7 @@ const CrudeChart = ({ step }) => {
             <g className={`crude_marker${view.marker ? ' visible' : ''}`}>
               <line x1={disruptionX} x2={disruptionX} y1={plotTop} y2={plotBottom} />
               <text x={disruptionX + 6} y={plotTop + 12}>
-                28 Feb
+                28 February 2026
               </text>
             </g>
             {SERIES.map(series => {
@@ -180,7 +185,7 @@ const CrudeChart = ({ step }) => {
               const opacity = series.key === 'gulf' ? view.gulfOpacity : view.redOpacity;
               return (
                 <g key={series.key} className={`crude_series ${series.key}`} style={{ '--series-opacity': opacity }}>
-                  <path className="crude_line" d={line()(points)} pathLength="1" style={{ '--line-offset': 1 - drawn / total }} />
+                  <path className="crude_line" d={line().curve(curveLinear)(points)} pathLength="1" style={{ '--line-offset': 1 - drawn / total }} />
                 </g>
               );
             })}

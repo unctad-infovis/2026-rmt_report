@@ -109,7 +109,7 @@ period averages, the late-June to early-July recovery and the combined view.
 * Hover, tap or use the keyboard (arrow keys, Home, End, Escape) on the plot for
   a tooltip. A "Get the data" link downloads the series as CSV.
 * Reduced-motion users and print see the final stage.
-* Line charts use straight segments, 5px strokes and a space as the thousands separator.
+* Line charts use straight segments, 3px strokes (thinner than the 5px default because of the dense daily data) and a space as the thousands separator.
 
 ## Packages
 
