@@ -1,0 +1,99 @@
+/* Clip horizontal overflow without creating a scrolling ancestor for sticky charts. */
+html:has(#app-root-2026-rmt_report),
+body:has(#app-root-2026-rmt_report) {
+  overflow-x: clip;
+}
+#app-root-2026-rmt_report {
+  /* Datawrapper UNCTAD theme panel background */
+  --chart-bg: #f4f9fd;
+}
+#app-root-2026-rmt_report .app {
+  .focus_story {
+    background: var(--chart-bg);
+    margin: 40px 0;
+    position: relative;
+    .focus_story_layout {
+      align-items: flex-start;
+      display: flex;
+      margin: 0 auto;
+      max-width: 1250px;
+      .focus_story_visual {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        height: 100svh;
+        padding: 16px 0;
+        position: sticky;
+        top: 0;
+        width: 65%;
+        z-index: 1;
+      }
+      .focus_story_panels {
+        padding-bottom: 25svh;
+        width: 35%;
+        .focus_story_panel {
+          align-items: center;
+          box-sizing: border-box;
+          display: flex;
+          min-height: 125svh;
+          padding: 30svh 20px;
+          .focus_story_text {
+            background: var(--un-color-blue);
+            color: #fff;
+            padding: clamp(16px, 2vw, 28px);
+            h3.focus_story_headline {
+              color: inherit;
+              font-size: var(--un-font-size-xl);
+              font-weight: var(--un-font-weight-bold);
+              line-height: var(--un-line-height-normal);
+              margin: 0 0 16px;
+              max-width: none;
+            }
+            p {
+              color: inherit;
+              font-size: var(--un-font-size-normal);
+              line-height: var(--un-line-height-large);
+              margin: 0;
+              max-width: none;
+              opacity: 1;
+              transform: none;
+              &.focus_story_step {
+                font-size: var(--un-font-size-xxs);
+                margin-bottom: 12px;
+              }
+            }
+          }
+        }
+      }
+      @media (max-width: 768px) {
+        flex-direction: column;
+        .focus_story_visual {
+          width: 100%;
+        }
+        .focus_story_panels {
+          margin-top: -35svh;
+          pointer-events: none;
+          position: relative;
+          width: 100%;
+          z-index: 2;
+          .focus_story_panel {
+            align-items: flex-start;
+            min-height: 150svh;
+            padding: 0 20px 95svh;
+            .focus_story_text {
+              margin: 0 auto;
+              max-width: 480px;
+              pointer-events: auto;
+              h3.focus_story_headline {
+                font-size: var(--un-font-size-normal);
+              }
+              p {
+                font-size: var(--un-font-size-xs);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

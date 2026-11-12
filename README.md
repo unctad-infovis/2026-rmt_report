@@ -15,7 +15,7 @@ application that is embedded within UNCTAD's Drupal platform.
 
 The page has an introduction and six chapters. Each chapter has a chapter header
 with optional PDF download, a takeaway box, the narrative with Datawrapper
-charts, and calls to action. A footer links to the full report, video and press
+charts and a custom D3 focus chart (Chapter 1), and calls to action. A footer links to the full report, video and press
 material.
 
 Developer handover notes and working rules are in [`CLAUDE.md`](CLAUDE.md).
@@ -78,6 +78,8 @@ All source code goes to folder `src`.
 * `src/jsx/App.css` – project-specific layout and narrative styles.
 * `src/jsx/components/minisite/` – local hero (`Header`), `HeaderChapter`, `Footer`,
   `InNumbers`, `IntroVideo` and `ReportCard` components.
+* `src/jsx/components/crude/` – Chapter 1 focus chart (Figures I.9 and I.10), D3.
+* `src/jsx/components/shared/FocusChartStory.jsx` – shared scroll activation and layout for focus charts.
 * `scripts/postbuild.js` – makes built asset paths relative.
 * `public/assets/img/` – images.
 
@@ -89,6 +91,25 @@ All source code goes to folder `src`.
   (`video_url`), language links, the launch event (`launch_event_url`), media
   links and press videos. Items with an empty `url` are hidden.
 * Missing images (hero, overview, chapter cards) are skipped.
+
+## Chapter 1 focus chart
+
+`crude/ChartFocusCrude.jsx` shows estimated daily crude oil movements out of the
+Persian Gulf and east from the Red Sea (Figures I.9 and I.10) instead of a
+Datawrapper embed. Its five scroll stages (`STAGES` in the component) introduce
+the Persian Gulf line, the Red Sea line, the 28 February disruption marker with
+period averages, the late-June to early-July recovery and the combined view.
+`shared/FocusChartStory.jsx` keeps the chart sticky beside the explanation panels.
+
+* Data lives in `crude/data.js` as `[date, persian_gulf, red_sea_eastbound]` rows
+  in million tons per day (seven-day moving averages, 2 January–26 July 2026),
+  converted from the authors' Datawrapper CSVs, which are in thousand tons.
+  `DISRUPTION_DATE`, `AVERAGES` and `RECOVERY` in the same file drive the marker,
+  average lines and highlighted band.
+* Hover, tap or use the keyboard (arrow keys, Home, End, Escape) on the plot for
+  a tooltip. A "Get the data" link downloads the series as CSV.
+* Reduced-motion users and print see the final stage.
+* Line charts use straight segments, 5px strokes and a space as the thousands separator.
 
 ## Packages
 
@@ -103,7 +124,7 @@ These packages are published from the [`un-init-project`](https://github.com/unc
 
 ### Project specific
 
-* none yet (add `d3` if custom charts are needed; other charts are Datawrapper embeds via `ChartDataWrapper`)
+* **d3** – the custom Chapter 1 focus chart. Other charts are Datawrapper embeds via `ChartDataWrapper`.
 
 ### Build & Dev Server
 

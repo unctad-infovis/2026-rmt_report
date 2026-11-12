@@ -31,6 +31,8 @@ The dev server is usually already running on port 8080. Check with `curl -s loca
 | `src/jsx/App.jsx` | Registers the components available in MDX and sets theme variables (`--main-color` = `--un-color-red`, `--un-column-width` = 920px). |
 | `src/jsx/App.css` | Project-specific styles: body copy, takeaway / calls-to-action boxes, quotes, side-scrolling text overlay, progress bar, back-to-top, reduced-motion rules. |
 | `src/jsx/components/minisite/` | Local versions of the minisite layout: `Header` (hero), `HeaderChapter`, `Footer`, `InNumbers` (chapter data sheets), shared `minisite.css`. |
+| `src/jsx/components/crude/` | Chapter 1 focus chart (Figures I.9 and I.10), D3. Data in `data.js` as `[date, persian_gulf, red_sea_eastbound]` in million tons per day, plus `DISRUPTION_DATE`, `AVERAGES` and `RECOVERY`; stages in the `STAGES` array of `ChartFocusCrude.jsx`. |
+| `src/jsx/components/shared/FocusChartStory.jsx` | Shared scroll activation/layout for focus charts (copied from TDR). |
 | `public/assets/img/` | Images. Hero is `2026-rmt_report_main_v2.jpg`; `2026-rmt_report_main.jpg` is kept as the alternative hero. |
 | `scripts/postbuild.js` | Rewrites absolute asset paths in built HTML/CSS to relative ones. |
 | `dist/` | **Committed** build output. It is what gets deployed. |
@@ -38,8 +40,8 @@ The dev server is usually already running on port 8080. Check with `curl -s loca
 
 ## Content conventions
 
-* Datawrapper charts are embedded with `<ChartDataWrapper chart_id="xxxxx" />` (from `@unctad-infovis/general-tools`). 
-* Skeleton status: six placeholder chapters (titles from the 2025 edition, to be revised). Planned chapter pattern: `SideScrollingText` (chapter intro with background image and blue veil) → `HeaderChapter` → takeaway box (`.highlight_container`) → `InNumbers` data sheet → body copy and charts → calls to action (`.highlight_container.calls_to_action`).
+* Datawrapper charts are embedded with `<ChartDataWrapper chart_id="xxxxx" />` (from `@unctad-infovis/general-tools`). The Chapter 1 focus chart is a custom D3 component (`<ChartFocusCrude />`) instead. 
+* Status: Chapter 1 has real copy, the focus chart and Datawrapper charts `zyJGk` (I.1), `W5eCo` (I.7) and `3s2LW` (I.15). Chapter 1 still lacks its image, `SideScrollingText` intro and `InNumbers`. Chapters 2–6 are placeholders (titles from the 2025 edition, to be revised). Planned chapter pattern: `SideScrollingText` (chapter intro with background image and blue veil) → `HeaderChapter` → takeaway box (`.highlight_container`) → `InNumbers` data sheet → body copy and charts → calls to action (`.highlight_container.calls_to_action`).
 * `HeaderChapter` hides the subtitle when the title already contains it, and puts a line break before that part of the title (chapter 2).
 * `InNumbers` props: `headline`, `headlinePrefix`, `headlineUnit`, `headlineDecimals`, `headlineLabel` (screen-reader text), `headlineText`, plus one visual: `bars`, `pair` (two `CircleFlag` country codes) or `share`. `facts` take an `icon` key from the `ICONS` map in `InNumbers.jsx`.
 * Footer blocks render only when their content exists in `meta.json` → `footer` (video, language links, launch event, media links). Empty `url` values hide the item.

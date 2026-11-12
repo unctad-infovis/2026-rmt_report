@@ -96,6 +96,16 @@
       max-width: var(--un-column-width);
       padding: 0;
     }
+    > .focus_story {
+      margin-left: -16px;
+      margin-right: -16px;
+      max-width: none;
+      width: calc(100% + 32px);
+    }
+    > .focus_story > .focus_story_layout {
+      margin: 0 auto;
+      max-width: 1250px;
+    }
     .highlight_container {
       --highlight-padding: clamp(24px, 3vw, 40px);
       background: var(--un-color-blue);
@@ -167,7 +177,7 @@
       }
       &:not(.calls_to_action) h3 {
         align-items: center;
-        background: var(--main-color);
+        background: var(--un-color-red);
         display: flex;
         font-size: clamp(var(--un-font-size-xl), 2.4vw, var(--un-font-size-xxxl));
         font-weight: var(--un-font-weight-boldest);
