@@ -10,6 +10,7 @@ import { useRef } from 'react';
 import Article from '../Article.mdx';
 
 import ChartFocusCrude from './components/crude/ChartFocusCrude.jsx';
+import ChartFocusFuel from './components/fuel/ChartFocusFuel.jsx';
 import Footer from './components/minisite/Footer.jsx';
 import Header from './components/minisite/Header.jsx';
 import HeaderChapter from './components/minisite/HeaderChapter.jsx';
@@ -25,6 +26,7 @@ const components = {
   BackToTop,
   ChartDataWrapper,
   ChartFocusCrude,
+  ChartFocusFuel,
   Footer,
   Header,
   HeaderChapter,

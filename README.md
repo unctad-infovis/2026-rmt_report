@@ -79,6 +79,7 @@ All source code goes to folder `src`.
 * `src/jsx/components/minisite/` – local hero (`Header`), `HeaderChapter`, `Footer`,
   `InNumbers`, `IntroVideo` and `ReportCard` components.
 * `src/jsx/components/crude/` – Chapter 1 focus chart (Figures I.9 and I.10), D3.
+* `src/jsx/components/fuel/` – Chapter 3 focus chart (Figure III.11, fuel costs as a share of import value), D3.
 * `src/jsx/components/shared/FocusChartStory.jsx` – shared scroll activation and layout for focus charts.
 * `scripts/postbuild.js` – makes built asset paths relative.
 * `public/assets/img/` – images.
@@ -96,16 +97,17 @@ All source code goes to folder `src`.
 
 `crude/ChartFocusCrude.jsx` shows estimated daily crude oil movements out of the
 Persian Gulf and east from the Red Sea (Figures I.9 and I.10) instead of a
-Datawrapper embed. Its five scroll stages (`STAGES` in the component) introduce
-the Persian Gulf line, the Red Sea line, the 28 February disruption marker with
-period averages, the late-June to early-July recovery and the combined view.
-`shared/FocusChartStory.jsx` keeps the chart sticky beside the explanation panels.
+Datawrapper embed. Its six scroll stages (`STAGES` in the component) show the
+Persian Gulf and Red Sea lines, the 28 February disruption marker with the Gulf
+baseline, the Red Sea averages, the gap between lost Gulf and added Red Sea
+volumes, the June agreement window and the July resumption. The Red Sea line is
+dashed grey. `shared/FocusChartStory.jsx` keeps the chart sticky beside the explanation panels.
 
 * Data lives in `crude/data.js` as `[date, persian_gulf, red_sea_eastbound]` rows
-  in million tons per day (seven-day moving averages, 2 January–26 July 2026),
-  converted from the authors' Datawrapper CSVs, which are in thousand tons.
-  `DISRUPTION_DATE`, `AVERAGES` and `RECOVERY` in the same file drive the marker,
-  average lines and highlighted band.
+  in thousand tons per day (seven-day moving averages, 2 January–26 July 2026),
+  converted from the authors' Datawrapper CSVs. `DISRUPTION_DATE`, `AVERAGES`
+  and `RECOVERY` in the same file drive the marker, average lines and the
+  highlighted window. The June agreement and July resumption dates are approximate.
 * Hover, tap or use the keyboard (arrow keys, Home, End, Escape) on the plot for
   a tooltip. A "Get the data" link downloads the series as CSV.
 * Reduced-motion users and print see the final stage.

@@ -1,7 +1,7 @@
 // biome-ignore-all lint/suspicious/noApproximativeNumericConstant: measured data values, not math constants
 // Figures I.9 and I.10: estimated crude oil movements, million tons per day, seven-day moving averages,
-// 2 January–26 July 2026. Source: Marine Benchmark estimates.
-export const DATA = [
+// 2 January–26 July 2026. Source: Marine Benchmark estimates. Exported as DATA in thousand tons per day.
+const RAW = [
   ['2026-01-02', 2.41, 0.356],
   ['2026-01-03', 2.199, 0.314],
   ['2026-01-04', 2.176, 0.294],
@@ -210,12 +210,14 @@ export const DATA = [
   ['2026-07-26', 0.127, 0.548]
 ];
 
+export const DATA = RAW.map(([date, gulf, redSea]) => [date, Math.round(gulf * 1000), Math.round(redSea * 1000)]);
+
 export const DISRUPTION_DATE = '2026-02-28';
-// Period averages in million tons per day, drawn as flat steps in the third stage.
-export const AVERAGES = { before: 0.39, after: 0.64 };
-// Gulf recovery window highlighted in the fourth stage.
+// Period averages in thousand tons per day, drawn as flat steps in the third stage.
+export const AVERAGES = { before: 390, after: 640 };
+// Gulf recovery window. Its ends mark the June agreement and the July resumption of the conflict (approximate dates).
 export const RECOVERY = { from: '2026-06-14', to: '2026-07-09' };
 
-export const NOTE = 'The lines show two selected flows. Covers crude oil tankers above 95,000 deadweight tons.';
+export const NOTE = 'The lines show two selected flows. The final slide draws on the report’s wider assessment of alternative suppliers and outlets.';
 
-export const CSV = ['Date,Persian Gulf outflows,Eastbound Red Sea', ...DATA.map(row => row.join(','))].join('\n');
+export const CSV = ['Date,Persian Gulf outflows (thousand tons per day),Eastbound Red Sea (thousand tons per day)', ...DATA.map(row => row.join(','))].join('\n');

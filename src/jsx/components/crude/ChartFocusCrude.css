@@ -25,6 +25,9 @@
           font-weight: var(--un-font-weight-bolder);
           line-height: var(--un-line-height-smallest);
           margin: 0;
+          .crude_accent {
+            color: var(--un-color-blue-text-dark);
+          }
           @media (max-width: 500px), (max-height: 500px) {
             font-size: var(--un-font-size-xs);
           }
@@ -65,7 +68,9 @@
             width: 16px;
           }
           &.red_sea span {
-            background: var(--un-color-yellow);
+            background: none;
+            border-top: 3px dashed var(--un-color-grey-dark);
+            height: 0;
           }
         }
       }
@@ -102,7 +107,7 @@
               width: 14px;
             }
             &.red_sea .tooltip_key {
-              background: var(--un-color-yellow);
+              background: var(--un-color-grey-dark);
             }
             strong {
               margin-left: auto;
@@ -123,7 +128,7 @@
             stroke: #fff;
             stroke-width: 2px;
             &.red_sea {
-              fill: var(--un-color-yellow);
+              fill: var(--un-color-grey-dark);
             }
           }
         }
@@ -143,7 +148,7 @@
             fill: var(--un-color-grey-dark);
             font-size: var(--un-font-size-xxs);
           }
-          .baseline line {
+          :where(.baseline) line {
             stroke: var(--un-color-grey-darkest);
             stroke-dasharray: none;
             stroke-width: 2px;
@@ -196,6 +201,59 @@
             font-size: var(--un-font-size-xxs);
           }
         }
+        .crude_gap {
+          opacity: var(--gap-opacity, 0);
+          transition: opacity 400ms;
+          .crude_gap_loss {
+            fill: color-mix(in srgb, var(--un-color-blue) 25%, #fff);
+          }
+          .crude_gap_gain {
+            fill: color-mix(in srgb, var(--un-color-grey-dark) 45%, #fff);
+          }
+        }
+        .crude_baseline {
+          opacity: 0;
+          transition: opacity 400ms;
+          &.visible {
+            opacity: 1;
+          }
+          line {
+            stroke: var(--un-color-blue-text-dark);
+            stroke-dasharray: 2 4;
+            stroke-width: 2px;
+          }
+          text {
+            fill: var(--un-color-blue-text-dark);
+            font-size: var(--un-font-size-xxs);
+          }
+        }
+        .crude_event {
+          opacity: 0;
+          transition: opacity 400ms;
+          &.visible {
+            opacity: 1;
+          }
+          line {
+            stroke: var(--un-color-blue-text-dark);
+            stroke-width: 2px;
+          }
+          text {
+            fill: var(--un-color-blue-text-dark);
+            font-size: var(--un-font-size-xxs);
+            font-weight: var(--un-font-weight-bold);
+          }
+          &.resume {
+            line {
+              stroke: var(--un-color-red);
+            }
+            text {
+              fill: var(--un-color-red);
+            }
+          }
+        }
+        .crude_clip {
+          transition: width 900ms;
+        }
         .crude_series {
           opacity: var(--series-opacity, 1);
           transition: opacity 400ms;
@@ -209,7 +267,8 @@
             transition: stroke-dashoffset 900ms;
           }
           &.red_sea path {
-            stroke: var(--un-color-yellow);
+            stroke: var(--un-color-grey-dark);
+            stroke-dasharray: 10 6;
           }
         }
       }
@@ -238,6 +297,10 @@
   #app-root-2026-rmt_report .app .crude_focus_story .crude_plot {
     .crude_series,
     .crude_band,
+    .crude_gap,
+    .crude_baseline,
+    .crude_event,
+    .crude_clip,
     .crude_marker,
     .crude_averages {
       transition: none;

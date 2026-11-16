@@ -1,42 +1,52 @@
-import { bisector, curveLinear, line, scaleLinear, scaleUtc, utcFormat, utcMonth } from 'd3';
+import { area, bisector, curveLinear, line, scaleLinear, scaleUtc, utcFormat, utcMonth } from 'd3';
 import { useEffect, useId, useRef, useState } from 'react';
 import FocusChartStory from '../shared/FocusChartStory.jsx';
 import { AVERAGES, CSV, DATA, DISRUPTION_DATE, NOTE, RECOVERY } from './data.js';
 
 import './ChartFocusCrude.css';
 
-const TITLE = 'Persian Gulf crude oil shipments plunge amid Hormuz disruptions';
-const DESCRIPTION = 'Estimated crude oil movements out of the Persian Gulf and east from the Red Sea, millions of tons per day, seven-day moving averages, 2 January 2026–26 July 2026';
+const TITLE_START = 'Red Sea oil shipments replaced';
+const TITLE_ACCENT = 'little';
+const TITLE_END = 'of the drop from the Persian Gulf';
+const TITLE = `${TITLE_START} ${TITLE_ACCENT} ${TITLE_END}`;
+const DESCRIPTION = 'Estimated crude oil movements out of the Persian Gulf and east out of the Red Sea, thousands of tons per day, seven-day moving averages, 2 January 2026–26 July 2026';
+const BASE_VIEW = { gulfUntil: null, redUntil: null, gulfOpacity: 1, redOpacity: 1, baseline: false, marker: false, averages: false, gapUntil: null, gapOpacity: 1, band: false };
 const STAGES = [
   {
     key: 'introduction',
-    headline: 'The Persian Gulf ships more crude',
-    body: 'In early 2026, far more crude oil leaves the Persian Gulf than moves east from the Red Sea.',
-    view: { gulfUntil: '2026-02-27', redUntil: '2026-02-27', gulfOpacity: 1, redOpacity: 1, marker: false, averages: false, band: false }
+    headline: 'The Persian Gulf ships over a third of seaborne crude oil',
+    body: 'Before 28 February, its shipments are several times those moving east out of the Red Sea.',
+    view: { ...BASE_VIEW, gulfUntil: '2026-02-27', redUntil: '2026-02-27' }
   },
   {
     key: 'disruption',
-    headline: 'Disruption hits the Strait of Hormuz',
-    body: 'Crude oil shipments from the Persian Gulf plunge after 28 February.',
-    view: { gulfUntil: '2026-05-31', redUntil: '2026-02-27', gulfOpacity: 1, redOpacity: 0.3, marker: true, averages: false, band: false }
+    headline: 'Shipments from the Gulf collapse',
+    body: 'After the Strait of Hormuz disruption, crude oil leaving the Persian Gulf falls sharply.',
+    view: { ...BASE_VIEW, gulfUntil: '2026-06-10', redUntil: '2026-02-27', redOpacity: 0.3, baseline: true, marker: true }
   },
   {
     key: 'red_sea',
-    headline: 'More crude oil moves east from the Red Sea',
-    body: 'The daily average rises from about 390,000 tons before 28 February to around 640,000 tons from March to late July.',
-    view: { gulfUntil: null, redUntil: null, gulfOpacity: 0.25, redOpacity: 1, marker: true, averages: true, band: false }
+    headline: 'Red Sea shipments rise by about two thirds',
+    body: 'Eastbound movements grow from about 390,000 tons a day to around 640,000 tons. Saudi exports through Yanbu, on the Red Sea, roughly double.',
+    view: { ...BASE_VIEW, gulfUntil: '2026-06-10', redUntil: '2026-06-10', gulfOpacity: 0.25, baseline: true, marker: true, averages: true }
+  },
+  {
+    key: 'gap',
+    headline: 'But a major gap remains',
+    body: 'The extra crude oil from the Red Sea replaces only a small share of what no longer leaves the Gulf.',
+    view: { ...BASE_VIEW, gulfUntil: '2026-06-10', redUntil: '2026-06-10', baseline: true, marker: true, gapUntil: '2026-06-10' }
   },
   {
     key: 'recovery',
-    headline: 'Persian Gulf crude shipments partly recover',
-    body: 'Volumes rise in June and early July but stay well below levels before the disruption.',
-    view: { gulfUntil: null, redUntil: null, gulfOpacity: 1, redOpacity: 0.35, marker: true, averages: false, band: true }
+    headline: 'A June agreement brings brief relief',
+    body: 'After the Islamabad Memorandum of Understanding, which aimed to restore shipping through the Strait, Gulf shipments partly recover.',
+    view: { ...BASE_VIEW, gulfUntil: '2026-07-10', redUntil: '2026-07-10', redOpacity: 0.3, baseline: true, marker: true, gapUntil: '2026-07-10', gapOpacity: 0.55, band: true }
   },
   {
-    key: 'conclusion',
-    headline: 'Other routes and suppliers offer limited relief',
-    body: 'Extra shipments elsewhere offset only part of the drop in crude oil leaving the Persian Gulf.',
-    view: { gulfUntil: null, redUntil: null, gulfOpacity: 1, redOpacity: 1, marker: true, averages: false, band: false }
+    key: 'resumption',
+    headline: 'The conflict resumes in July',
+    body: 'Shipments fall again. By late July, crude oil leaving the Persian Gulf is still far below its level before the disruption.',
+    view: { ...BASE_VIEW, redOpacity: 0.3, baseline: true, marker: true, gapUntil: '2026-07-26', gapOpacity: 0.55, band: true }
   }
 ];
 const SERIES = [
@@ -47,6 +57,9 @@ const SERIES = [
 const toDate = value => new Date(`${value}T00:00:00Z`);
 const dates = DATA.map(row => toDate(row[0]));
 const dayFormat = utcFormat('%-d %B %Y');
+const numberFormat = value => Math.round(value).toLocaleString('en-US').replace(/,/g, ' ');
+const preIndex = dates.findIndex(date => date >= toDate(DISRUPTION_DATE)) - 1;
+const gulfBaseline = DATA.slice(0, preIndex + 1).reduce((sum, row) => sum + row[1], 0) / (preIndex + 1);
 const monthFormat = utcFormat('%b');
 const dateBisector = bisector(date => date).center;
 const lastIndexUntil = until => (until ? Math.max(0, dateBisector(dates, toDate(until))) : dates.length - 1);
@@ -86,11 +99,11 @@ const CrudeChart = ({ step }) => {
   const view = STAGES[state].view;
   const chartWidth = Math.max(200, width - 32);
   const height = Math.max(180, Math.min(350, viewportHeight - 360));
-  const plotLeft = 36;
+  const plotLeft = 44;
   const plotRight = chartWidth - 8;
   const plotTop = 14;
   const plotBottom = height - 46;
-  const yMax = hasData ? Math.max(0.5, Math.ceil(Math.max(...DATA.map(row => Math.max(row[1], row[2]))) * 2) / 2) : 2.5;
+  const yMax = hasData ? Math.max(500, Math.ceil(Math.max(...DATA.map(row => Math.max(row[1], row[2]))) / 500) * 500) : 2500;
   const x = scaleUtc()
     .domain(hasData ? [dates[0], dates[dates.length - 1]] : [toDate('2026-01-02'), toDate('2026-07-26')])
     .range([plotLeft, plotRight]);
@@ -102,6 +115,20 @@ const CrudeChart = ({ step }) => {
   const selectedRow = selectedIndex === null ? null : DATA[selectedIndex];
   const tooltipSeries = selectedRow ? SERIES.filter(series => selectedIndex <= drawnUntil[series.key]) : [];
   const disruptionX = x(toDate(DISRUPTION_DATE));
+  const gapEnd = view.gapUntil ? lastIndexUntil(view.gapUntil) : preIndex;
+  const gapIndexes = dates.map((_, index) => index).filter(index => index >= preIndex && index <= gapEnd);
+  const gapPath = area()
+    .curve(curveLinear)
+    .x(index => x(dates[index]))
+    .y0(index => y(index === preIndex ? DATA[index][1] : gulfBaseline))
+    .y1(index => y(DATA[index][1]))(gapIndexes);
+  const gainPath = area()
+    .curve(curveLinear)
+    .x(index => x(dates[index]))
+    .y0(() => y(AVERAGES.before))
+    .y1(index => y(Math.max(DATA[index][2], AVERAGES.before)))(gapIndexes);
+  const agreementX = x(toDate(RECOVERY.from));
+  const resumptionX = x(toDate(RECOVERY.to));
   const tooltipWidth = Math.min(260, chartWidth);
 
   const selectPointerDate = event => {
@@ -128,7 +155,9 @@ const CrudeChart = ({ step }) => {
         <svg viewBox="0 0 288.8 289.6" aria-hidden="true">
           <path d="M11.4,289c-2.6,0-5.2-0.4-9.6-0.7c51.3-48.9,101.1-96.5,151.6-144.7C103.8,96.4,54.7,49.5,5.5,2.6C5.7,2.1,6,1.5,6.2,1C7.8,1,9.4,1,11,1C51,1,91,1.1,131,0.9c5.8,0,9.9,1.7,14,5.7c27.5,26.4,55.2,52.7,82.8,79c20.1,19.2,40.2,38.5,60.3,57.7c-0.7,1.1-1,1.9-1.6,2.4c-48.5,46.3-97.1,92.6-145.6,139c-3.5,3.4-7.2,4.5-11.9,4.5C89.8,289,50.6,289.1,11.4,289" />
         </svg>
-        <h3>{TITLE}</h3>
+        <h3 aria-label={TITLE}>
+          {TITLE_START} <span className="crude_accent">{TITLE_ACCENT}</span> {TITLE_END}
+        </h3>
       </div>
       <p className="crude_description">{DESCRIPTION}</p>
       <ul className="crude_legend">
@@ -153,7 +182,7 @@ const CrudeChart = ({ step }) => {
                 <g key={value} className={value === 0 ? 'baseline' : ''}>
                   <line x1={plotLeft} x2={plotRight} y1={y(value)} y2={y(value)} />
                   <text x={plotLeft - 6} y={y(value) + 4} textAnchor="end">
-                    {value.toFixed(1)}
+                    {numberFormat(value)}
                   </text>
                 </g>
               ))}
@@ -170,11 +199,33 @@ const CrudeChart = ({ step }) => {
                 </text>
               ))}
             </g>
-            <rect className={`crude_band${view.band ? ' visible' : ''}`} x={x(toDate(RECOVERY.from))} y={plotTop} width={x(toDate(RECOVERY.to)) - x(toDate(RECOVERY.from))} height={plotBottom - plotTop} />
+            <rect className={`crude_band${view.band ? ' visible' : ''}`} x={agreementX} y={plotTop} width={resumptionX - agreementX} height={plotBottom - plotTop} />
+            <g className="crude_gap" style={{ '--gap-opacity': view.gapUntil ? view.gapOpacity : 0 }}>
+              <path className="crude_gap_loss" d={gapPath} />
+              <path className="crude_gap_gain" d={gainPath} />
+            </g>
+            <g className={`crude_baseline${view.baseline ? ' visible' : ''}`}>
+              <line x1={plotLeft} x2={plotRight} y1={y(gulfBaseline)} y2={y(gulfBaseline)} />
+              <text x={plotRight - 4} y={y(gulfBaseline) - 6} textAnchor="end">
+                Gulf level before the disruption
+              </text>
+            </g>
             <g className={`crude_marker${view.marker ? ' visible' : ''}`}>
               <line x1={disruptionX} x2={disruptionX} y1={plotTop} y2={plotBottom} />
               <text x={disruptionX + 6} y={plotTop + 12}>
                 28 February 2026
+              </text>
+            </g>
+            <g className={`crude_event${view.band ? ' visible' : ''}`}>
+              <line x1={agreementX} x2={agreementX} y1={plotTop} y2={plotBottom} />
+              <text x={agreementX - 6} y={plotTop + 12} textAnchor="end">
+                June: agreement to restore shipping
+              </text>
+            </g>
+            <g className={`crude_event resume${step === STAGES.length - 1 || reducedMotion ? ' visible' : ''}`}>
+              <line x1={resumptionX} x2={resumptionX} y1={plotTop} y2={plotBottom} />
+              <text x={resumptionX - 6} y={plotTop + 28} textAnchor="end">
+                July: conflict resumes
               </text>
             </g>
             {SERIES.map(series => {
@@ -183,9 +234,16 @@ const CrudeChart = ({ step }) => {
               const total = lengths.reduce((sum, length) => sum + length, 0) || 1;
               const drawn = lengths.slice(0, drawnUntil[series.key]).reduce((sum, length) => sum + length, 0);
               const opacity = series.key === 'gulf' ? view.gulfOpacity : view.redOpacity;
+              const clipId = `${tooltipId}-${series.key}`.replace(/:/g, '');
+              const dashed = series.key === 'red_sea';
               return (
                 <g key={series.key} className={`crude_series ${series.key}`} style={{ '--series-opacity': opacity }}>
-                  <path className="crude_line" d={line().curve(curveLinear)(points)} pathLength="1" style={{ '--line-offset': 1 - drawn / total }} />
+                  {dashed && (
+                    <clipPath id={clipId}>
+                      <rect className="crude_clip" x={plotLeft} y={0} width={x(dates[drawnUntil[series.key]]) - plotLeft} height={height} />
+                    </clipPath>
+                  )}
+                  <path className="crude_line" d={line().curve(curveLinear)(points)} pathLength={dashed ? undefined : 1} clipPath={dashed ? `url(#${clipId})` : undefined} style={dashed ? undefined : { '--line-offset': 1 - drawn / total }} />
                 </g>
               );
             })}
@@ -220,7 +278,7 @@ const CrudeChart = ({ step }) => {
               aria-valuemin={0}
               aria-valuemax={maxDrawn}
               aria-valuenow={selectedIndex ?? 0}
-              aria-valuetext={selectedRow ? `${dayFormat(dates[selectedIndex])}. ${tooltipSeries.map(series => `${series.label}: ${selectedRow[series.column].toFixed(2)} million tons per day`).join('. ')}` : dayFormat(dates[0])}
+              aria-valuetext={selectedRow ? `${dayFormat(dates[selectedIndex])}. ${tooltipSeries.map(series => `${series.label}: ${numberFormat(selectedRow[series.column])} thousand tons per day`).join('. ')}` : dayFormat(dates[0])}
               aria-describedby={selectedRow ? tooltipId : undefined}
               onPointerMove={selectPointerDate}
               onPointerDown={selectPointerDate}
@@ -243,7 +301,7 @@ const CrudeChart = ({ step }) => {
               <div className={`tooltip_row ${series.key}`} key={series.key}>
                 <span className="tooltip_key" />
                 <span>{series.label}</span>
-                <strong>{selectedRow[series.column].toFixed(2)}</strong>
+                <strong>{numberFormat(selectedRow[series.column])}</strong>
               </div>
             ))}
           </div>
