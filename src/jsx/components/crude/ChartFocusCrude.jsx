@@ -101,7 +101,7 @@ const CrudeChart = ({ step }) => {
   const height = Math.max(180, Math.min(350, viewportHeight - 360));
   const plotLeft = 44;
   const plotRight = chartWidth - 8;
-  const plotTop = 14;
+  const plotTop = 66;
   const plotBottom = height - 46;
   const yMax = hasData ? Math.max(500, Math.ceil(Math.max(...DATA.map(row => Math.max(row[1], row[2]))) / 500) * 500) : 2500;
   const x = scaleUtc()
@@ -206,26 +206,50 @@ const CrudeChart = ({ step }) => {
             </g>
             <g className={`crude_baseline${view.baseline ? ' visible' : ''}`}>
               <line x1={plotLeft} x2={plotRight} y1={y(gulfBaseline)} y2={y(gulfBaseline)} />
-              <text x={plotRight - 4} y={y(gulfBaseline) - 6} textAnchor="end">
+              <text x={(disruptionX + plotRight) / 2 - (plotRight - disruptionX) * 0.1} y={y(gulfBaseline) + 15} textAnchor="middle">
                 Gulf level before the disruption
               </text>
             </g>
             <g className={`crude_marker${view.marker ? ' visible' : ''}`}>
-              <line x1={disruptionX} x2={disruptionX} y1={plotTop} y2={plotBottom} />
-              <text x={disruptionX + 6} y={plotTop + 12}>
-                28 February 2026
+              <line x1={disruptionX} x2={disruptionX} y1={plotTop - 6} y2={plotBottom} />
+              <text textAnchor="middle">
+                <tspan x={disruptionX} y={plotTop - 23}>
+                  28 February
+                </tspan>
+                <tspan x={disruptionX} y={plotTop - 10}>
+                  2026
+                </tspan>
               </text>
             </g>
             <g className={`crude_event${view.band ? ' visible' : ''}`}>
-              <line x1={agreementX} x2={agreementX} y1={plotTop} y2={plotBottom} />
-              <text x={agreementX - 6} y={plotTop + 12} textAnchor="end">
-                June: agreement to restore shipping
+              <line x1={agreementX} x2={agreementX} y1={plotTop - 6} y2={plotBottom} />
+              <text textAnchor="middle">
+                <tspan x={agreementX} y={plotTop - 49}>
+                  June:
+                </tspan>
+                <tspan x={agreementX} y={plotTop - 36}>
+                  agreement
+                </tspan>
+                <tspan x={agreementX} y={plotTop - 23}>
+                  to restore
+                </tspan>
+                <tspan x={agreementX} y={plotTop - 10}>
+                  shipping
+                </tspan>
               </text>
             </g>
             <g className={`crude_event resume${step === STAGES.length - 1 || reducedMotion ? ' visible' : ''}`}>
-              <line x1={resumptionX} x2={resumptionX} y1={plotTop} y2={plotBottom} />
-              <text x={resumptionX - 6} y={plotTop + 28} textAnchor="end">
-                July: conflict resumes
+              <line x1={resumptionX} x2={resumptionX} y1={plotTop - 6} y2={plotBottom} />
+              <text textAnchor="middle">
+                <tspan x={resumptionX} y={plotTop - 36}>
+                  July:
+                </tspan>
+                <tspan x={resumptionX} y={plotTop - 23}>
+                  conflict
+                </tspan>
+                <tspan x={resumptionX} y={plotTop - 10}>
+                  resumes
+                </tspan>
               </text>
             </g>
             {SERIES.map(series => {
