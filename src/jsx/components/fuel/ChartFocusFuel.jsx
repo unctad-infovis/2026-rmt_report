@@ -83,9 +83,9 @@ const FuelChart = ({ step }) => {
   const barWidth = Math.min(64, slotWidth * 0.72);
   const slotX = slot => plotLeft + slotWidth * (slot + 0.5) - barWidth / 2;
   const y = scaleLinear().domain([0, 5.6]).range([plotBottom, plotTop]);
-  const yBenchmark = scaleLinear().domain([0, 14]).range([plotBottom, plotTop]);
+  const yBenchmark = scaleLinear().domain([0, 15.5]).range([plotBottom, plotTop]);
   const yTicks = [0, 1, 2, 3, 4, 5];
-  const benchmarkTicks = [0, 5, 10];
+  const benchmarkTicks = [0, 5, 10, 15];
   const benchmarkX = plotLeft + (plotRight - plotLeft) / 2 - barWidth * 0.8;
   const benchmarkWidth = barWidth * 1.6;
   const benchmarkTotal = BENCHMARK.base + BENCHMARK.increase;
@@ -138,7 +138,7 @@ const FuelChart = ({ step }) => {
             <g key={value} className={value === 0 ? 'baseline' : ''}>
               <line x1={plotLeft} x2={plotRight} y1={y(value)} y2={y(value)} />
               <text x={plotLeft - 6} y={y(value) + 4} textAnchor="end">
-                {value.toFixed(1)}
+                {value}
               </text>
             </g>
           ))}
@@ -148,7 +148,7 @@ const FuelChart = ({ step }) => {
             <g key={value} className={value === 0 ? 'baseline' : ''}>
               <line x1={plotLeft} x2={plotRight} y1={yBenchmark(value)} y2={yBenchmark(value)} />
               <text x={plotLeft - 6} y={yBenchmark(value) + 4} textAnchor="end">
-                {value.toFixed(1)}
+                {value}
               </text>
             </g>
           ))}
