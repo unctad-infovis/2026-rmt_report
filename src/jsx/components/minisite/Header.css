@@ -134,8 +134,7 @@
               position: absolute;
               z-index: 1;
               &:focus-visible {
-                outline: 3px solid var(--un-color-yellow);
-                outline-offset: 3px;
+                outline: none;
               }
             }
             background: none;
@@ -150,8 +149,7 @@
             scroll-snap-align: start;
             text-align: left;
             &:focus-visible {
-              outline: 3px solid var(--un-color-yellow);
-              outline-offset: 3px;
+              outline: none;
             }
             .chapter_navigation {
               align-items: stretch;
