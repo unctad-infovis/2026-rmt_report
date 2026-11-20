@@ -19,7 +19,7 @@
       justify-content: space-between;
       margin: auto;
       max-width: var(--un-column-width);
-      min-height: 50vh;
+      min-height: min(72vh, calc(100vh - 47px));
       padding-inline: 0;
       width: 100%;
       @media (max-width: 1399px) {

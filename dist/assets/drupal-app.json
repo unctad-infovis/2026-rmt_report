@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "title": "Review of Maritime Transport 2026",
+  "index": "../index.html",
+  "container": "<div id=\"app-root-2026-rmt_report\" class=\"app-root-2026-rmt_report\">Loading...</div>",
+  "script_type": "module",
+  "js": [
+    "../js/2026-rmt_report.min.js"
+  ],
+  "css": [
+    "font/fonts.css",
+    "../css/2026-rmt_report.min.css"
+  ],
+  "thumbnail": "img/2026-rmt_report_full_cover.jpg",
+  "version": "3"
+}

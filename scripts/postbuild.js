@@ -19,3 +19,12 @@ for (const p of fs.readdirSync('dist/css').map(f => `dist/css/${f}`)) {
   const fixed = css.replace(/url\(['"]?\/assets\//g, match => match.replace('/assets/', '../assets/'));
   fs.writeFileSync(p, fixed);
 }
+
+// Bump the Drupal app manifest version on every build. The source copy in public/ keeps the counter,
+// the copy in dist/ (already copied by Vite) gets the same value.
+const manifestSource = 'public/assets/drupal-app.json';
+const manifest = JSON.parse(fs.readFileSync(manifestSource, 'utf8'));
+manifest.version = String((Number.parseInt(manifest.version, 10) || 0) + 1);
+const manifestJson = `${JSON.stringify(manifest, null, 2)}\n`;
+fs.writeFileSync(manifestSource, manifestJson);
+fs.writeFileSync('dist/assets/drupal-app.json', manifestJson);
