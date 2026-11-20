@@ -108,14 +108,16 @@
         }
         .container_chapters_navigation {
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 170px));
+          grid-template-columns: repeat(6, minmax(0, 170px));
           gap: 10px;
-          max-width: var(--un-column-width);
+          max-width: 1350px;
           overflow-x: auto;
           overscroll-behavior-inline: contain;
           padding: 0 0 8px;
           scroll-snap-type: x proximity;
           .chapter_card {
+            --main-color: var(--un-color-blue-text-dark);
+            --secondary-color: var(--un-color-blue-darkest);
             position: relative;
             &.overview_card {
               --main-color: #009edb;
@@ -246,6 +248,12 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1150px) {
+  #app-root-2026-rmt_report .app div.container_header_wrapper .container_header .header_bottom .container_chapters_navigation {
+    grid-template-columns: repeat(3, minmax(0, 170px));
   }
 }
 

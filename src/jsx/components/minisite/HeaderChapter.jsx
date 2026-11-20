@@ -23,11 +23,7 @@ function HeaderChapter({ chapter_number, pdf_url, image_url, subtitle, title }) 
         {showSubtitle && <h4>{subtitle}</h4>}
       </div>
       {pdf_url && <ButtonAnchor className="chapter_download" text={`Download chapter ${chapter_number}`} url={pdf_url} />}
-      {image_url && (
-        <div className="hidden">
-          <Image alt={title} image_url={image_url} parallax={false} />
-        </div>
-      )}
+      {image_url && <Image alt={title} image_url={image_url} parallax={false} />}
     </div>
   );
 }

@@ -1,46 +1,39 @@
 {
   "chapters": [
     {
-      "card_image_url": "",
-      "image_url": "",
+      "card_image_url": "assets/img/2026-rmt_report_chapter1_square.webp?v=1",
+      "image_url": "assets/img/2026-rmt_report_chapter1_banner.webp?v=1",
       "pdf_url": "https://unctad.org/system/files/official-document/rmt2026ch1_en.pdf",
       "subtitle": "",
       "title": "International maritime trade"
     },
     {
-      "card_image_url": "",
-      "image_url": "",
+      "card_image_url": "assets/img/2026-rmt_report_chapter2_square.webp?v=1",
+      "image_url": "assets/img/2026-rmt_report_chapter2_banner.webp?v=1",
       "pdf_url": "https://unctad.org/system/files/official-document/rmt2026ch2_en.pdf",
       "subtitle": "",
       "title": "World shipping fleet and services"
     },
     {
-      "card_image_url": "",
-      "image_url": "",
+      "card_image_url": "assets/img/2026-rmt_report_chapter3_square.webp?v=1",
+      "image_url": "assets/img/2026-rmt_report_chapter3_banner.webp?v=1",
       "pdf_url": "https://unctad.org/system/files/official-document/rmt2026ch3_en.pdf",
       "subtitle": "",
       "title": "Freight rates and maritime transport costs"
     },
     {
-      "card_image_url": "",
-      "image_url": "",
+      "card_image_url": "assets/img/2026-rmt_report_chapter4_square.webp?v=1",
+      "image_url": "assets/img/2026-rmt_report_chapter4_banner.webp?v=1",
       "pdf_url": "https://unctad.org/system/files/official-document/rmt2026ch4_en.pdf",
       "subtitle": "",
       "title": "Port performance and maritime trade facilitation"
     },
     {
-      "card_image_url": "",
-      "image_url": "",
+      "card_image_url": "assets/img/2026-rmt_report_chapter5_square.webp?v=1",
+      "image_url": "assets/img/2026-rmt_report_chapter5_banner.webp?v=1",
       "pdf_url": "https://unctad.org/system/files/official-document/rmt2026ch5_en.pdf",
       "subtitle": "",
       "title": "Legal issues and regulatory developments"
-    },
-    {
-      "card_image_url": "",
-      "image_url": "",
-      "pdf_url": "",
-      "subtitle": "",
-      "title": "The way forward"
     }
   ],
   "footer": {
@@ -52,11 +45,11 @@
     "video_title": "",
     "video_url": ""
   },
-  "full_report_cover_url": "",
+  "full_report_cover_url": "assets/img/2026-rmt_report_full_cover.jpg?v=1",
   "full_report_languages": [],
   "full_report_url": "https://unctad.org/system/files/official-document/rmt2026_en.pdf",
-  "image_url": "",
-  "overview_image_url": "",
+  "image_url": "assets/img/2026-rmt_report_main.jpg?v=1",
+  "overview_image_url": "assets/img/2026-rmt_report_overview_square.webp?v=1",
   "overview_url": "https://unctad.org/system/files/official-document/rmt2026overview_en.pdf",
   "show_site_header": true,
   "subtitle": "",

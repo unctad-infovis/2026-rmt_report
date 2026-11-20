@@ -13,7 +13,7 @@ text, data visualisations and chapter navigation.
 Content is authored in MDX (`src/Article.mdx`) and rendered as a standalone React
 application that is embedded within UNCTAD's Drupal platform.
 
-The page has an introduction and six chapters. Each chapter has a chapter header
+The page has an introduction and five chapters. Each chapter has a chapter header
 with optional PDF download, a takeaway box, the narrative with Datawrapper
 charts and a custom D3 focus chart (Chapter 1), and calls to action. A footer links to the full report, video and press
 material.

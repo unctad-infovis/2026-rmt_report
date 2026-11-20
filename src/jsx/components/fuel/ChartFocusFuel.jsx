@@ -13,38 +13,38 @@ const DESCRIPTION = 'Estimated ship fuel costs on the final voyage and across al
 const STAGES = [
   {
     key: 'final_before',
-    headline: 'LDCs already paid more for fuel',
-    body: 'Before the Hormuz disruption, fuel for the final voyage into a country cost the equivalent of 0.8% of the value of the goods carried, on average worldwide. For LDCs, it was nearly double, at 1.5%.',
+    headline: 'Least developed countries already paid more for fuel',
+    body: 'Before the Hormuz disruption, fuel for the final leg cost 1.5% of import value in least developed countries – nearly twice the global average of 0.8% in January and February 2026.',
     view: { increase: false, finalLine: false, finalOpacity: 1, wholeBars: 0, wholeLine: false, note: null, benchmark: false }
   },
   {
     key: 'final_after',
-    headline: 'Higher fuel prices add to the bill',
-    body: 'After the disruption, fuel costs on the final voyage reached 1.3% of goods value worldwide, 1.2% for SIDS – still slightly below average – and 2.6% for LDCs.',
+    headline: 'Higher marine fuel prices add to the import bill',
+    body: 'After the disruption, fuel for the final leg cost 2.6% of import value in least developed countries, compared with 1.3% worldwide and 1.2% in small island developing states.',
     view: { increase: true, finalLine: true, finalOpacity: 1, wholeBars: 0, wholeLine: false, note: 'final_sids', benchmark: false }
   },
   {
     key: 'whole_world',
-    headline: 'What about the whole journey?',
-    body: 'Many goods travel on more than one ship. Counting every voyage, fuel costs reach 3.2% of goods value worldwide, more than twice the final-voyage figure.',
+    headline: 'What about the whole journey to the importing country?',
+    body: 'Many goods travel on more than one ship. Across all legs, fuel costs reach 3.2% of import value worldwide – more than twice the final-leg figure.',
     view: { increase: true, finalLine: false, finalOpacity: 0.35, wholeBars: 1, wholeLine: true, note: null, benchmark: false }
   },
   {
     key: 'whole_sids',
-    headline: 'SIDS move above the average',
-    body: 'Their imports often switch ships at hub ports, so counting every voyage pushes their fuel costs to 3.5% of goods value, above the world average.',
+    headline: 'Small islands’ fuel costs rise above the global average',
+    body: 'Imports to small island developing states often involve trans-shipment at hub ports, so counting every leg of the voyage pushes their maritime fuel costs to 3.5% of goods value, above the world average.',
     view: { increase: true, finalLine: false, finalOpacity: 0.35, wholeBars: 2, wholeLine: true, note: 'whole_sids', benchmark: false }
   },
   {
     key: 'whole_ldcs',
-    headline: 'LDCs still pay the most',
-    body: 'At 4.8% of goods value, their fuel costs are about one and a half times the world average.',
+    headline: 'Maritime fuel costs remain highest for least developed countries',
+    body: 'Across all legs, their fuel costs reach 4.8% of import value – one and a half times the global average.',
     view: { increase: true, finalLine: false, finalOpacity: 0.35, wholeBars: 3, wholeLine: true, note: 'whole_ldcs', benchmark: false }
   },
   {
     key: 'benchmark',
-    headline: 'Fuel pushes up the total cost of shipping',
-    body: 'Shipping goods by sea cost about 11.1% of their value in 2021, the latest estimate. Higher fuel prices would add 1.4 percentage points, raising that to about 12.5%.',
+    headline: 'Higher fuel costs raise the total shipping bill',
+    body: 'Shipping goods by sea cost about 11.1% of their value in 2021, the latest global estimate. Higher fuel prices would add 1.4 percentage points, raising that to about 12.5%.',
     view: { increase: true, finalLine: false, finalOpacity: 0, wholeBars: 0, wholeLine: false, note: null, benchmark: true }
   }
 ];

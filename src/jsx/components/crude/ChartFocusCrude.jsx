@@ -9,7 +9,7 @@ const TITLE_START = 'Red Sea oil shipments replaced';
 const TITLE_ACCENT = 'little';
 const TITLE_END = 'of the drop from the Persian Gulf';
 const TITLE = `${TITLE_START} ${TITLE_ACCENT} ${TITLE_END}`;
-const DESCRIPTION = 'Estimated crude oil movements out of the Persian Gulf and east out of the Red Sea, thousands of tons per day, seven-day moving averages, 2 January 2026–26 July 2026';
+const DESCRIPTION = 'Estimated crude oil movements out of the Persian Gulf and eastbound movements out of the Red Sea, thousands of tons per day, seven-day moving averages, 2 January 2026–26 July 2026';
 const BASE_VIEW = { gulfUntil: null, redUntil: null, gulfOpacity: 1, redOpacity: 1, baseline: false, marker: false, averages: false, gapUntil: null, gapOpacity: 1, band: false };
 const STAGES = [
   {
@@ -22,31 +22,19 @@ const STAGES = [
     key: 'disruption',
     headline: 'Shipments from the Gulf collapse',
     body: 'After the Strait of Hormuz disruption, crude oil leaving the Persian Gulf falls sharply.',
-    view: { ...BASE_VIEW, gulfUntil: '2026-06-10', redUntil: '2026-02-27', redOpacity: 0.3, baseline: true, marker: true }
+    view: { ...BASE_VIEW, gulfUntil: null, redUntil: '2026-02-27', redOpacity: 0.3, baseline: true, marker: true }
   },
   {
     key: 'red_sea',
-    headline: 'Red Sea shipments rise by about two thirds',
-    body: 'Eastbound movements grow from about 390,000 tons a day to around 640,000 tons. Saudi exports through Yanbu, on the Red Sea, roughly double.',
-    view: { ...BASE_VIEW, gulfUntil: '2026-06-10', redUntil: '2026-06-10', gulfOpacity: 0.25, baseline: true, marker: true, averages: true }
+    headline: 'Eastbound crude flows out of the Red Sea rise by two thirds',
+    body: 'Eastbound movements increased from around 390,000 to 640,000 tons per day. Separately, Saudi crude exports through Yanbu, on the Red Sea, roughly doubled.',
+    view: { ...BASE_VIEW, gulfOpacity: 0.25, baseline: true, marker: true, averages: true }
   },
   {
     key: 'gap',
     headline: 'But a major gap remains',
-    body: 'The extra crude oil from the Red Sea replaces only a small share of what no longer leaves the Gulf.',
-    view: { ...BASE_VIEW, gulfUntil: '2026-06-10', redUntil: '2026-06-10', baseline: true, marker: true, gapUntil: '2026-06-10' }
-  },
-  {
-    key: 'recovery',
-    headline: 'A June agreement brings brief relief',
-    body: 'After the Islamabad Memorandum of Understanding, which aimed to restore shipping through the Strait, Gulf shipments partly recover.',
-    view: { ...BASE_VIEW, gulfUntil: '2026-07-10', redUntil: '2026-07-10', redOpacity: 0.3, baseline: true, marker: true, gapUntil: '2026-07-10', gapOpacity: 0.55, band: true }
-  },
-  {
-    key: 'resumption',
-    headline: 'The conflict resumes in July',
-    body: 'Shipments fall again. By late July, crude oil leaving the Persian Gulf is still far below its level before the disruption.',
-    view: { ...BASE_VIEW, redOpacity: 0.3, baseline: true, marker: true, gapUntil: '2026-07-26', gapOpacity: 0.55, band: true }
+    body: 'Extra eastbound crude oil moving out of the Red Sea, including shipments redirected through Saudi Arabia’s Yanbu port, offsets only a small share of the drop in crude oil leaving the Persian Gulf.',
+    view: { ...BASE_VIEW, baseline: true, marker: true, gapUntil: '2026-07-26' }
   }
 ];
 const SERIES = [
@@ -175,7 +163,7 @@ const CrudeChart = ({ step }) => {
             width={chartWidth}
             height={height}
             viewBox={`0 0 ${chartWidth} ${height}`}
-            aria-label="Crude oil movements, 2 January to 26 July 2026. Persian Gulf outflows fall sharply after the Strait of Hormuz disruption on 28 February and partly recover in June and early July. Eastbound movements from the Red Sea rise."
+            aria-label="Crude oil movements, 2 January to 26 July 2026. Persian Gulf outflows fall sharply after the Strait of Hormuz disruption on 28 February and stay far below the earlier level. Eastbound movements from the Red Sea rise."
           >
             <g className="crude_grid">
               {yTicks.map(value => (

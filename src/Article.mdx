@@ -35,15 +35,22 @@
     </div>
   )}
 
-  More than 80% of the goods the world trades travel by sea, including the food and fuel countries depend on.
+  When traffic through the Strait of Hormuz collapsed in March 2026, many ships were already avoiding the Red Sea because of security risks. Shifting trade policies were also reshaping shipping routes.
 
-  When traffic through the Strait of Hormuz collapsed in March 2026, many ships were already avoiding the Red Sea, and shifting trade policies were changing routes. Later, water shortages led to restrictions at the Panama Canal.
+  By midyear, Panama Canal restrictions reflected concerns about drought, low water levels and extra cargo rerouted after the Hormuz disruption. Worsening security in the Black Sea added pressure.
 
-  Detours kept goods moving, but often raised costs and made deliveries less reliable – especially for small island developing states and the least developed countries.
+  More than 80% of the goods the world trades travel by sea, including the food and fuel countries depend on. Rerouting keeps goods moving but lengthens journeys and raises costs, especially for vulnerable economies.
 
-  Beyond disruptions and shifting routes, shipping also faces pressure to cut emissions and manage growing cybersecurity risks. The Review of Maritime Transport 2026 calls for resilience by design. That means planning for disruptions that can happen at the same time, so goods keep moving reliably and affordably.
+  Shipping also faces pressure to cut emissions, switch to clean energy, digitalize faster and manage growing cyber risks.
 
-  {/* TODO: Secretary-General quote from the foreword, to be supplied by the authors. */}
+  The Review of Maritime Transport 2026 calls for resilience by design – preparing for and managing overlapping disruptions so goods move reliably, efficiently and affordably.
+
+  <Quote
+    name="Pedro Manuel Moreno"
+    text="Resilience by design and sustainability by default set the standard: maritime transport that keeps essential goods moving to every port, from the busiest hub to the most remote island, whatever the next disruption."
+    title="Acting Secretary-General of UN Trade and Development (UNCTAD)"
+    variant="bar"
+  />
 </div>
 
 <ProgressBar selector=".container_chapters" />
@@ -67,7 +74,7 @@
     <div className="highlight_container">
       ### The takeaway
 
-      Trade kept moving despite disruptions and shocks in 2026, often on longer, costlier routes. But some developing economies have few alternative routes or suppliers. Preparing better for future disruptions would help ensure goods reach markets on time and at a reasonable cost.
+      Trade kept moving in 2026 despite ongoing and new disruptions to maritime chokepoints and shipping routes, but often on longer, costlier voyages. And alternative routes or suppliers can be limited in many cases, including for developing economies. Better preparation for future disruptions would help goods reach markets on time and at a reasonable cost.
     </div>
 
     <InNumbers
@@ -76,9 +83,9 @@
         { highlight: true, label: '2026', value: 0 },
         { label: '2027', value: 3.2 }
       ]}
-      barsCaption="Seaborne trade volume growth, per cent, 2025–2027. The 2026 and 2027 figures are forecasts."
+      barsCaption="Seaborne trade volume (in tons) growth, per cent, 2025–2027. The 2026 and 2027 figures are forecasts."
       facts={[
-        { icon: 'trend_down', text: 'Drop in tanker traffic through the Strait of Hormuz by tonnage by July 2026', value: '-95%' },
+        { icon: 'trend_down', text: 'Drop in daily ship transits through the Strait of Hormuz in early March 2026, from about 120 a day', value: '-95%' },
         { icon: 'route', text: 'Projected rise in ton-miles in 2026, as cargo travels farther', value: '+1.5%' },
         { icon: 'target', text: 'Share of Yemen’s seaborne wheat imports supplied by just one country in 2024', value: '90.2%' }
       ]}
@@ -87,40 +94,38 @@
       headlineUnit="%"
     />
 
-    By late July 2026, tanker traffic through the Strait of Hormuz was still around 95% below normal, measured by tonnage. Disruption on this major route for oil and fertilizer can raise energy costs, strain manufacturing supply chains and make food more expensive to grow.
+    By late July 2026, traffic through the Strait of Hormuz remained well below pre-disruption levels, measured by gross tonnage. Disruption to this major oil and fertilizer route can raise energy costs, strain manufacturing supply chains and make food more expensive to grow.
 
-    Ships took longer routes and buyers turned to other suppliers to keep goods moving.
+    Ships took longer routes and buyers switched suppliers to keep goods moving.
 
-    {/* FOCUS CHART – Figures I.9 and I.10. Daily data to be added in components/crude/data.js. */}
+    {/* FOCUS CHART – Figures I.9 and I.10. Daily data in components/crude/data.js. */}
     <ChartFocusCrude />
 
-    Under current policies, global oil demand is projected to stay far above levels consistent with net-zero emissions. Seaborne trade in low-carbon fuels remains limited.
+    Seaborne trade is forecast to show no volume growth in 2026, yet cargo is expected to travel farther. Ton-miles, which combine weight and distance, are projected to rise 1.5%. Longer voyages can delay deliveries and raise import costs.
 
-    UN Trade and Development (UNCTAD) forecasts flat seaborne trade volumes in 2026, with cargo travelling farther. Ton-miles, which combine weight and distance, are expected to rise 1.5%. Longer voyages can delay deliveries and raise costs for importers.
-
-    {/* FIGURE I.1 – Flat cargo volumes, longer distances at sea expected. World seaborne trade, tons and ton-miles, annual percentage change, 2006–2026. */}
+    {/* FIGURE I.1 – Flat cargo volume growth, longer distances at sea expected. World seaborne trade, tons and ton-miles, annual percentage change, 2006–2026. Source: UN Trade and Development (UNCTAD) calculations, based on Clarksons Research for ton-miles and UNCTAD seaborne trade data and projections for tons. Note: A ton-mile is one ton of cargo carried one mile. The dotted segments show the 2026 projections. The volume forecast assumes that conditions affecting passage through the Strait of Hormuz in the first half of 2026 broadly persist in the second. */}
     <ChartDataWrapper chart_id="zyJGk" />
 
-    Importers can change suppliers as well as routes. As tariff conditions changed, US buyers turned to suppliers in Viet Nam and elsewhere in Asia. The Viet Nam–US route accounted for 1.8% of global container trade in 2025, up from 0.5% in 2015.
+    Importers can find other suppliers as well as alternative routes. As sourcing strategies, production capacities and trade policies changed, buyers in the United States turned to Viet Nam and other Asian suppliers. The Viet Nam–United States route accounted for 1.8% of global container trade in 2025, up from 0.5% in 2015.
 
-    China’s container shipments to the US fell, while shipments to India, Indonesia and Mexico grew. Trade among developing economies grew fastest: South–South container trade rose 12.1% in 2025, more than twice the global rate.
+    China’s container shipments to the US fell between 2015 and 2025, while those to India, Indonesia and Mexico grew. Container trade among developing economies grew fastest, rising 12.1% in 2025, more than twice the global rate.
 
-    {/* FIGURE I.7 – China’s container shipments fell on the US route and rose on others. Estimated net change on the 25 largest maritime container routes, thousands of loaded twenty-foot equivalent units, 2015–2025. */}
+    {/* FIGURE I.7 – China’s container shipments fell on the US route and rose on others. Estimated net change on the 25 largest maritime container routes, thousands of loaded twenty-foot equivalent units, 2015–2025. Source: MDS Transmodal, World Cargo Database, 2 July 2026. Note: The chart selects routes by 2025 volume among country pairs with at least 100,000 loaded twenty-foot equivalent units in one or more years during 2015–2025. Routes are grouped by pattern of change and ranked by size of change within each group. */}
     <ChartDataWrapper chart_id="W5eCo" />
 
-    Limited shipping links can make it hard for some least developed countries and small island developing states to switch suppliers. Disruptions affecting a major supplier or its shipping route can delay deliveries, raise import costs or make staple foods harder to get. That can put food security at risk.
+    Limited shipping links can make switching suppliers difficult for some least developed countries and small island developing states. In Yemen, for example, Australia supplied 90.2% of seaborne wheat imports in 2024.
 
-    In Yemen, for example, Australia supplied 90.2% of seaborne wheat imports in 2024.
+    Disruptions to a major supplier or route can delay deliveries and make staple foods harder and more expensive to import, putting food security at risk.
 
-    {/* FIGURE I.15 – Some vulnerable countries depend on one supplier for wheat and meslin imports. Top supplier share of seaborne wheat/meslin imports in selected least developed countries and small island developing States, per cent, 2024. */}
+    {/* FIGURE I.15 – Some vulnerable countries depend on one supplier for wheat and meslin imports. Top supplier share of seaborne wheat/meslin imports in selected least developed countries and small island developing states, per cent, 2024. Total seaborne imports at right, thousands of tons. Source: UN Trade and Development (UNCTAD) calculations, based on UNCTAD Seaborne Trade data. */}
     <ChartDataWrapper chart_id="3s2LW" />
 
     <div className="highlight_container calls_to_action">
       ### Calls to action
 
-      - <strong>Governments and importers should identify alternative suppliers and shipping routes in advance.</strong> Governments could link shipping data to early warning systems for food security.
-      - <strong>Governments and port operators should invest in ports and inland transport links to benefit from trade shifting to new routes.</strong> Governments could also simplify trade procedures and keep trade and investment rules predictable.
-      - <strong>Port authorities and transport operators should prepare infrastructure for low-carbon fuels.</strong> Governments could set the rules these fuels will need while seaborne trade in them is still limited.
+      - <strong>Governments and importers should use seaborne trade data to assess their exposure to disruptions and strengthen contingency plans.</strong> They could check how much they depend on major suppliers and shipping corridors, and identify other viable suppliers and routes, particularly for food and energy.
+      - <strong>Governments, port authorities and shipping companies should adapt to changing container trade patterns.</strong> Stronger ports, shipping links and inland connections, backed by efficient trade procedures and predictable investment conditions, could help economies seize new trade opportunities and join changing supply chains.
+      - <strong>Governments and the shipping and energy industries should prepare for changes in seaborne energy trade.</strong> With fossil fuels still widely shipped, they could keep energy supply routes secure and diversified while building the infrastructure, safety standards and rules for emerging trade in low-carbon fuels.
     </div>
   </div>
 
@@ -140,17 +145,17 @@
     <div className="highlight_container">
       ### The takeaway
 
-      Disruptions on major shipping routes sent ships on longer voyages, helping keep a growing container fleet busy. A large-scale return to the Red Sea–Suez route could leave more ships than cargo. Better contingency plans and clear global emissions rules would help shipping companies adapt and invest in cleaner ships.
+      The global fleet is at a crossroads: growing and ageing while adapting to changing trade patterns, technologies and fuels. Longer routes have kept container ships busy. A return to normal traffic and weaker demand could leave excess capacity. Modern, digitalized, energy-efficient and low-carbon fleets are essential for sustainable, resilient shipping.
     </div>
 
     <InNumbers
       bars={[
-        { label: '2025', text: '7.7', value: 7.7 },
-        { highlight: true, label: '2026', text: '14', value: 14 }
+        { label: '2025', text: '7.7%', value: 7.7 },
+        { highlight: true, label: '2026', text: '14%', value: 14 }
       ]}
-      barsCaption="Growth in global shipyard output by gross tonnage, per cent, 2025–2026. The 2026 figure is a forecast."
+      barsCaption="Shipyard output is expanding, reflecting growing shipbuilding capacity, primarily in China. The 2026 figure is a forecast."
       facts={[
-        { icon: 'trend_down', text: 'Growth in fleet carrying capacity in 2025', value: '3.5%' },
+        { icon: 'trend_down', text: 'Growth in global fleet carrying capacity in 2025, 115,655 ships and 2.53 billion deadweight tons', value: '+3.5%' },
         { icon: 'drop', text: 'Share of global fleet tonnage in 2026 made up of ships able to use alternative fuels', value: '9.4%' },
         { icon: 'globe', text: 'Share of global ship recycling capacity held by Bangladesh, China, India, Pakistan and Türkiye', value: 'Over 95%' }
       ]}
@@ -159,34 +164,39 @@
       headlineUnit="%"
     />
 
-    Along with cutting traffic and extending voyages, disruptions in the Strait of Hormuz stranded crews and drove up insurance costs.
+    The Hormuz disruption cut traffic, lengthened voyages and reportedly stranded over 20,000 seafarers in the Persian Gulf in early March 2026. Nearly 6,000 remained in early July. By September, evacuations were paused and seafarers’ safety remained a major concern.
 
-    In early March 2026, more than 20,000 seafarers were reported stranded aboard ships in the Persian Gulf. Nearly 6,000 were still there in early July. For a tanker worth $100 million, the war risk premium reportedly rose within days from about $200,000 to $1 million per voyage. Container lines added surcharges of up to $2,000 per container to customers’ bills.
+    War risk premiums for a $100 million tanker reportedly jumped within days from about $200,000 to $1 million per voyage. Container lines added emergency war risk and bunker fuel surcharges to cover higher operating costs.
 
+    {/* FIGURE II.1 – Strait of Hormuz traffic plunged below other major routes. Monthly ship transits and arrivals for the Suez Canal, Panama Canal, Strait of Hormuz and Cape of Good Hope, number of ships, 2024–2026. Source: UNCTAD calculations, based on data from Clarksons Research, 2026a. */}
     <ChartDataWrapper chart_id="QG0eK" />
-    {/* FIGURE II.1 – Strait of Hormuz traffic collapsed while other major routes held steady. Monthly ship transits and arrivals for the Suez Canal, Panama Canal, Strait of Hormuz and Cape of Good Hope, number of ships, 2024–2026. Source: UNCTAD calculations, based on data from Clarksons Research, 2026a. */}
 
-    Red Sea security risks have kept many carriers sailing around the Cape of Good Hope, tying up container ships on longer voyages. A widespread return to the shorter Red Sea–Suez route would free up ships. With new vessels entering service and few older ones being recycled, the market could end up with more ships than cargo, pushing freight rates down.
+    Since late 2023, Red Sea security risks have kept many carriers sailing around the Cape of Good Hope, tying up container ships on longer voyages. Some container lines are trying to return to the shorter Red Sea route.
 
+    A widespread return would free up capacity. With new ships arriving and few older ones recycled, excess capacity could push freight rates down, especially if demand weakens.
+
+    {/* FIGURE II.13 – Container ship orders have tripled as a share of the fleet since 2021. Gross tonnage of ships on order by ship type, per cent of the active fleet’s gross tonnage for each type, 2005–2026. Source: UN Trade and Development (UNCTAD) calculations, based on data from Clarksons Research. Note: LNG stands for liquefied natural gas. LPG stands for liquefied petroleum gas. */}
     <ChartDataWrapper chart_id="eoY66" />
-    {/* FIGURE II.13 – Container ship orders have tripled as a share of the fleet since 2021. Gross tonnage of ships on order by ship type, per cent of the active fleet's gross tonnage for each type, 2005–2026. Source: UN Trade and Development (UNCTAD) calculations, based on data from Clarksons Research. Note: LNG stands for liquefied natural gas. LPG stands for liquefied petroleum gas. */}
 
-    The International Maritime Organization postponed talks on whether to adopt global net-zero rules for shipping until late 2026. Without them, shipowners face different emissions rules depending on where they operate.
+    Global agreement on shipping emissions rules in line with the International Maritime Organization’s 2023 strategy remains uncertain after talks were postponed until late 2026. As regional rules evolve and the industry works to cut emissions, shipowners need greater certainty about rules, fuels and technologies.
 
-    The fleet in service still relies mainly on conventional fuels. But nearly half of the tonnage on order is for ships that can run on alternative fuels – though that share dipped this year, partly because global rules remain unclear.
+    The active fleet still relies mainly on conventional fuels. But in 2024 and 2025, nearly half the tonnage on order was for ships able to use alternative fuels. That share fell slightly in 2026, partly because of uncertainty over global rules and competing fuels’ long-term viability.
 
+    {/* FIGURE II.9 – Alternative fuel-capable ships make up nearly half of tonnage on order. Share of ships on order that can use alternative fuels, by tonnage and ship count, per cent, 2005–2026. Source: UNCTAD calculations, based on data from Clarksons Research (2026a). TODO: use the updated figure from Magali (should show 2026); Datawrapper chart KGeBp to be updated. */}
     <ChartDataWrapper chart_id="KGeBp" />
-    {/* FIGURE II.9 – Alternative fuel-capable ships make up nearly half of tonnage on order. Share of ships on order that can use alternative fuels, by tonnage and ship count, per cent, 2005–2026. Source: UNCTAD calculations, based on data from Clarksons Research (2026a). */}
 
-    About 42% of the world’s ships are over 20 years old. Fleet renewal will create work beyond shipbuilding. Developing countries could take on more of that work by repairing, upgrading and safely recycling older ships.
+    The global fleet is ageing, making renewal essential. Ships over 20 years old make up 42% of the fleet by number, and older ships account for a larger share of fleet capacity in developing economies.
+
+    Recycling remains limited but is expected to grow, supporting modernization. Developing countries could gain more work repairing, upgrading and safely recycling older ships.
 
     <div className="highlight_container calls_to_action">
       ### Calls to action
 
-      - <strong>Governments and shipping companies should prepare for disruptions together.</strong> They could identify alternative routes in advance, agree on how to protect crews in a crisis and cooperate on maritime security to keep sea lanes open.
-      - <strong>Shipowners should align new ship orders with expected demand and arrange for older ships to be recycled safely and in an environmentally sound way.</strong>
-      - <strong>Governments should agree on predictable global emissions rules.</strong> Financial institutions could then direct funding to ships that can meet future requirements.
-      - <strong>Development partners could help developing countries build expertise in repairing, upgrading and safely recycling ships.</strong>
+      - <strong>Governments, the shipping industry, development partners, the technology and alternative fuel sector, financial institutions and investors should work together to make shipping networks more resilient, flexible and secure.</strong> They could diversify routes, manage risks in advance and strengthen international cooperation.
+      - <strong>These partners should speed up emissions cuts by modernizing fleets.</strong> Predictable rules, policies and financing would support the energy transition.
+      - <strong>They should expand digitalization and strengthen cybersecurity across maritime transport and logistics.</strong> This would help developing countries share in the benefits of digital transformation.
+      - <strong>They should expand sustainable maritime industrial capacity and strengthen governance across the value chain.</strong> This would support long-term competitiveness, workforce development and environmental sustainability.
+      - <strong>Development partners should help developing countries build expertise in ship repair, retrofitting and safe, sustainable recycling.</strong> Countries with established shipbuilding industries could share their know-how.
     </div>
   </div>
 
@@ -206,7 +216,7 @@
     <div className="highlight_container">
       ### The takeaway
 
-      A disruption on one shipping route can raise the cost of essential imports far away. Small island developing states and the least developed countries are especially exposed because their imports often change ships, adding fuel costs along the way. Closer monitoring of shipping costs could help countries anticipate shocks and protect supplies of essential goods.
+      Disruptions on major shipping routes can raise freight rates, make them more volatile and increase essential import costs. Small island developing states and least developed countries are especially exposed because their imports often rely on trans-shipment, adding fuel costs. Closer monitoring of shipping costs could help countries anticipate shocks and protect essential supplies.
     </div>
 
     <InNumbers
@@ -215,7 +225,7 @@
         { label: 'SIDS', text: '3.5', value: 3.5 },
         { highlight: true, label: 'LDCs', text: '4.8', value: 4.8 }
       ]}
-      barsCaption="Ship fuel costs as a share of the value of imports, counting every voyage, after the Hormuz disruption, per cent. SIDS: small island developing states. LDCs: least developed countries."
+      barsCaption="Estimated ship fuel costs as a share of the value of imports, counting every voyage, after the Hormuz disruption, percentage. SIDS: small island developing states. LDCs: least developed countries."
       facts={[
         { icon: 'drop', text: 'Jump in the price of very low-sulphur ship fuel in Singapore, a global benchmark, in March 2026', value: '+98%' },
         { icon: 'route', text: 'Rise in container rates from Shanghai to the Persian Gulf and Red Sea between February and August 2026', value: '5×' },
@@ -224,32 +234,40 @@
       headline={0.35}
       headlineDecimals={2}
       headlinePrefix="+"
-      headlineText="Simulated rise in consumer prices in the least developed countries, against 0.27% in small island developing states and 0.19% worldwide"
+      headlineText="Simulated consumer-price rise due to higher marine fuel costs in least developed countries, against 0.27% in small island developing states and 0.19% worldwide"
       headlineUnit="%"
     />
 
-    Longer voyages kept ships tied up and helped push container rates higher in 2026. The disruption in the Strait of Hormuz also drove up the price of ship fuel, adding to shipping costs far beyond the Persian Gulf. In March, fuel prices in Singapore – a global benchmark – nearly doubled.
+    Longer voyages kept ships at sea for longer and helped push container rates higher in 2026.
 
-    <ChartDataWrapper chart_id="M9W2M" />
+    The overall container index more than doubled between January and August 2026. Rates from Shanghai to the Persian Gulf and Red Sea rose from about $1,075 in February to a record $5,637 per 20-foot container in August.
+
+    {/* FIGURE III.2 – Container rates fell in 2025, then climbed in 2026. Shanghai Containerized Freight Index, overall spot rates, index points, monthly averages, January 2015–August 2026. */}
+    <ChartDataWrapper chart_id="1H5AZ" />
+
+    The Hormuz disruption, particularly to tanker traffic, also raised ship fuel prices and shipping costs far beyond the Persian Gulf.
+
     {/* FIGURE III.8 – Ship fuel prices jumped after the Hormuz disruption. Ship fuel prices in Singapore, high-sulphur and very low-sulphur fuel oil, dollars per ton, monthly averages, January 2020–May 2026. */}
+    <ChartDataWrapper chart_id="M9W2M" />
 
-    Imports to small island developing states and the least developed countries often travel farther and change ships, so fuel costs add up. For small island developing states, fuel costs as a share of the value of their imports were slightly below the global average on the final voyage but above it across the whole journey.
+    Imports to small island developing states and least developed countries often travel farther and pass through more trans-shipment hubs, so fuel costs add up. For small island developing states, fuel costs as a share of import value were slightly below the global average on the final voyage but above it over the whole journey.
 
     {/* FOCUS CHART – Figure III.11. Values in components/fuel/data.js. */}
     <ChartFocusFuel />
 
-    Higher shipping costs don’t stay with shipping companies. Passed on to importers through freight rates and surcharges, they can raise the price of imported food, energy and fertilizer. If they last, UNCTAD estimates they would push up consumer prices and reduce purchasing power, especially in small island developing states and the least developed countries.
+    Higher shipping costs reach importers through freight rates and surcharges and can raise the price of traded goods, particularly imported food, energy and fertilizer. Sustained higher marine fuel costs are estimated to raise consumer prices and reduce purchasing power, especially in small island developing states and least developed countries.
 
-    How much importers pay depends on the route. From February to August 2026, container rates from Shanghai to the Persian Gulf and Red Sea rose from about $1,075 to a record $5,637 per 20-foot container. The overall index rose far less, little more than doubling between January and August. Averages can hide where costs hit hardest, which is why monitoring them route by route matters.
+    Averages can hide where costs hit hardest, making monitoring by route important.
 
-    <ChartDataWrapper chart_id="1H5AZ" />
-    {/* FIGURE III.2 – Container rates fell in 2025, then climbed in 2026. Shanghai Containerized Freight Index, overall spot rates, index points, monthly averages, January 2015–August 2026. */}
+    {/* FIGURE – Higher marine fuel costs hit vulnerable economies harder. Simulated percentage changes in consumer prices and real income worldwide and in selected economic groups. */}
+    <ChartDataWrapper chart_id="ftsx9" />
 
     <div className="highlight_container calls_to_action">
       ### Calls to action
 
-      - <strong>Governments should track shipping costs and capacity route by route.</strong> They could bring together data from ports, carriers, customs authorities and shippers on freight rates, surcharges and delays.
-      - <strong>Development partners could help vulnerable countries assess their exposure.</strong> Assessments would show small island developing states, the least developed countries and landlocked developing countries how shipping costs affect the price and supply of essential imports.
+      - <strong>Governments and transport operators should monitor shipping costs.</strong> They could set up an integrated system combining data from ports, carriers, customs authorities and shippers on freight rates, shipping capacity, connectivity, surcharges and delays.
+      - <strong>Development agencies, including UNCTAD, could help vulnerable countries assess their exposure to shipping costs.</strong> Assessments could help them better understand how these costs affect the price and supply of essential imports.
+      - <strong>Governments and the shipping industry should coordinate policies and share data to better prepare for and respond to disruptions.</strong> International and regional organizations could support common data standards, timely information sharing and the capacity to analyse data.
     </div>
   </div>
 
@@ -269,7 +287,7 @@
     <div className="highlight_container">
       ### The takeaway
 
-      Even before the Hormuz disruption, container ships waited longer at ports in developing countries. The disruption then pushed cargo through other ports and overland, often across borders. Agreeing on routes and customs procedures in advance could help keep essential goods moving.
+      Even before the Hormuz disruption, container ships faced longer waits at ports in developing countries. The disruption added pressure on ports and inland networks, sending cargo through alternative ports and across borders. Trade facilitation frameworks and continuity plans covering whole transport corridors, with routes and customs procedures agreed in advance, could help keep essential goods moving.
     </div>
 
     <InNumbers
@@ -277,44 +295,47 @@
         { highlight: true, label: 'Least developed countries', text: '40.1', value: 40.1 },
         { label: 'Rest of the world', text: '109.7', value: 109.7 }
       ]}
-      barsCaption="Score for access to regular shipping services, June 2026."
+      barsCaption="Liner shipping connectivity index scores, June 2026."
       facts={[
-        { icon: 'pulse', text: 'Share of ships’ time in port spent waiting to dock, first half of 2026', value: '31%' },
+        { icon: 'pulse', text: 'Share of the increase in port waiting time due to longer waits for a berth, comparing the first seven months of 2019 and 2026', value: '31%' },
         { icon: 'trend_down', text: 'Growth in capacity at nine major ports from 2019 to 2026, against a 28% rise in trade volumes', value: '+21%' },
         { icon: 'target', text: 'Survey respondents who want their national trade facilitation committee to coordinate plans for keeping trade moving in a crisis', value: '93%' }
       ]}
       headline={47}
       headlinePrefix="+"
-      headlineText="Rise in the least developed countries’ access to regular shipping services since 2006, yet they still lag behind"
+      headlineText="Rise in least developed countries’ liner shipping connectivity since 2006, yet they still lag behind"
       headlineUnit="%"
     />
 
-    Waiting is costly, and ships in developing countries do more of it. By the end of 2025, a container ship there waited about twice as long to dock as one in a developed country – a gap that widened over the year.
+    Since 2006, least developed countries’ liner shipping connectivity – their access to regular shipping services – has grown by 47%, against 17% elsewhere. Yet their score remains about a third of the rest of the world’s.
 
+    Waiting is costly. By the end of 2025, container ships waited about twice as long for a berth in developing countries as in developed ones. The gap widened over the year.
+
+    {/* FIGURE IV.7 – Container ships wait longer at ports in developing countries. Average time container ships waited for a berth, developed and developing countries, hours, March 2016–December 2025. Source: Clarksons Research Services, April 2026. Note: Waiting time runs from a ship first entering a port anchorage to its first berthing. Developing countries include China. */}
     <ChartDataWrapper chart_id="qLPPl" />
-    {/* FIGURE IV.7 – Container ships wait longer at ports in developing countries. Average time container ships waited to dock, developed and developing countries, hours, March 2016–December 2025. Source: Clarksons Research Services, April 2026. Note: Waiting time runs from a ship first entering a port anchorage to its first berthing. Developing countries include China. */}
 
-    In ports, bigger tends to be faster. Moving a container in a load of fewer than 500 takes about seven times as long as in one of more than 6,000. The gains go to big hubs, such as those in China, the Republic of Korea and Singapore, and the gap has widened since 2021. Ports in small island developing states and the least developed countries, which mostly handle small loads, largely miss out.
+    In ports, bigger tends to be faster. Handling each container takes about seven times as long in port calls involving fewer than 500 container moves as in those involving more than 6,000.
 
-    <ChartDataWrapper chart_id="HKM7q" />
+    The efficiency gains go to big hubs, such as those in China, the Republic of Korea and Singapore. Ports in small island developing states and least developed countries mostly handle smaller loads per call and largely miss these gains.
+
     {/* FIGURE IV.8 – Big loads speed up, small ones slow down. Time to move a container, by port call size, annual mean for the 25 economies with the most port calls, minutes, 2021–2025. Source: UN Trade and Development (UNCTAD), based on data provided by the S&P Global Port Performance Program, June 2026. Note: Call size is the number of containers moved during a port call, from under 500 to over 6,000. */}
+    <ChartDataWrapper chart_id="HKM7q" />
 
-    Since 2006, the least developed countries’ access to regular shipping services has grown by 47%, against 17% elsewhere. But it started from a low base and is still about a third of the rest of the world’s. Their connectivity rankings have also fluctuated more over time.
+    When the Strait of Hormuz was disrupted in February 2026, cargo shifted to other ports, then moved by road and rail, often across borders.
 
-    When the Strait of Hormuz was disrupted in February 2026, cargo shifted to other ports and moved on by road and rail, often across borders.
+    Overlapping disruptions test ports. Governments and public agencies could establish trade facilitation frameworks for continuity planning along transport corridors. These could help activate alternative routes quickly during overlapping disruptions, reducing uncertainty and costs.
 
-    One large carrier expanded overland services from ports in Saudi Arabia, the United Arab Emirates and Oman, and India cut paperwork for its diverted ships. How quickly goods move on such routes depends on customs and transit rules. Agreeing on them in advance and testing them could keep essential goods moving in a crisis.
+    The frameworks could identify routes combining transport modes and agree arrangements for border management, customs and transit procedures, information sharing and priority goods across agencies. Yet two thirds of surveyed national trade facilitation committee respondents were unfamiliar with business continuity planning. These committees bring government and business together.
 
-    Yet in an UNCTAD survey of national trade facilitation committees, which bring government and business together, two thirds of respondents were unfamiliar with such planning.
-
-    Ports also face a growing risk of cyberattacks: maritime cyber incidents reportedly doubled in 2025.
+    Ports also face growing cyberattack risks. Maritime cyber incidents reportedly doubled in 2025.
 
     <div className="highlight_container calls_to_action">
       ### Calls to action
 
-      - <strong>Port authorities, terminal operators and shipping lines should coordinate to cut waiting times.</strong> Closer coordination could help ports use existing capacity more efficiently and make shipping services more reliable.
-      - <strong>National trade facilitation committees should work with counterparts in neighbouring countries to plan alternative routes before a crisis.</strong> They could agree on procedures to keep cargo moving and test them in joint exercises.
-      - <strong>Port authorities should expand digital systems while strengthening cybersecurity.</strong> Development partners could help developing countries close digital gaps and share in the efficiency gains.
+      - <strong>Port authorities should build resilience into planning and decision-making.</strong> They could upgrade infrastructure, secure digital systems, invest in workers and environmental sustainability, diversify logistics and use performance data to keep services running during disruptions.
+      - <strong>Port authorities, terminal operators and shipping lines should coordinate to cut waiting times.</strong> Closer coordination could help ports use existing capacity more efficiently and improve service reliability.
+      - <strong>Governments and public agencies could set up trade facilitation frameworks for continuity planning along transport corridors.</strong> These could help activate alternative transport and transit routes quickly during disruptions.
+      - <strong>National trade facilitation committees should coordinate plans for alternative routes with counterparts in neighbouring countries before a crisis.</strong> They could agree on procedures to keep cargo moving and test those procedures in joint exercises.
     </div>
   </div>
 
@@ -334,64 +355,32 @@
     <div className="highlight_container">
       ### The takeaway
 
-      The 2010 Hazardous and Noxious Substances (HNS) Convention, in force from November 2027, will help victims claim compensation when hazardous cargo carried by sea causes harm. Coastal developing countries and small island developing states could gain most, yet only 13 countries have joined.
+      In November 2027, a convention will enter into force, compensating people harmed by hazardous cargo carried by sea. Other legal developments cover ship registration, autonomous ships, marine biodiversity, court-ordered ship sales and cargo documents. More countries joining and applying these agreements could strengthen protection and how the seas are governed.
     </div>
 
-    <InNumbers
-      bars={[
-        { highlight: true, label: '2010 HNS Convention', text: '13', value: 13 },
-        { label: '1992 oil pollution convention', text: '149', value: 149 }
-      ]}
-      barsCaption="Countries that had joined the HNS Convention and the 1992 oil pollution liability convention (in force since 1996), 30 October 2026."
-      facts={[
-        { icon: 'gem', text: 'Maximum total compensation per incident under the HNS Convention', value: '~$340 million' },
-        { icon: 'route', text: 'Ships that carry or may carry hazardous cargo', value: '~65 000' },
-        { icon: 'target', text: 'Share of falsely flagged ships claiming a least developed country’s flag', value: '~45%' }
-      ]}
-      headline={13}
-      headlineText="Countries that had joined the 2010 HNS Convention, none of them small island developing states, as of 30 October 2026"
-    />
+    The 2010 Hazardous and Noxious Substances (HNS) Convention enters into force on 29 November 2027, closing a major gap in maritime law. Its comprehensive regime covers death, injury, pollution damage and the cost of preventive measures caused by hazardous cargo carried by sea, including chemicals, liquefied gases and some alternative fuels.
 
-    In 2021, a container ship carrying hazardous chemicals caught fire and sank off Sri Lanka, polluting the sea and coastline. Ships carrying such cargo pass close to many coastal developing countries and small island developing states, where pollution can threaten livelihoods in fishing and tourism – even if those countries import little of it.
+    Shipowners are strictly liable within set limits – liability doesn’t depend on proving fault – and must hold insurance. Additional compensation comes from an international fund, financed by HNS cargo receivers. The total can reach 250 million special drawing rights per incident.
 
-    From 29 November 2027, the 2010 Hazardous and Noxious Substances (HNS) Convention will establish an international system to compensate people and businesses for harm caused by hazardous cargo. Shipowners’ compulsory insurance pays first, and an international fund covers what it can’t.
+    Joining the convention would especially benefit coastal developing states and small island developing states, which are often highly vulnerable to HNS incidents despite importing little or no HNS cargo. The convention doesn’t cover damage from HNS, including alternative fuels, used to power or operate ships.
 
-    Companies in countries that have joined pay into the fund only if they receive hazardous cargo above set amounts. So countries that import little can join at little cost and still give their people access to compensation. Yet only 13 countries have joined, none of them small island developing states.
+    No mandatory international rules govern the ship registration process. The non-mandatory IMO Guidelines on the Registration of Ships provide the first internationally agreed guidance on registration procedures.
 
-    The HNS Convention covers fuels such as ammonia and methanol when they are carried as cargo. Damage from using them to power or operate ships falls outside its scope. That gap will widen as more ships use alternative fuels. The International Maritime Organization (IMO) has set up a working group to address it.
+    The Agreement on Marine Biological Diversity of Areas beyond National Jurisdiction (BBNJ Agreement), in force since 17 January 2026, covers the high seas and international seabed. The Beijing Convention, in force since 17 February 2026, provides uniform rules for cross-border recognition of judicial sales of ships.
 
-    No binding international rules govern ship registration. By February 2026, 529 ships were falsely flying a country’s flag, about 45% of them a least developed country’s – a risk to safety, the marine environment and seafarers.
+    The non-mandatory International Code of Safety for Maritime Autonomous Surface Ships (MASS Code) took effect on 1 July 2026. A mandatory code is envisaged by 2030.
+
+    The UN Convention on Negotiable Cargo Documents (NCD Convention) sets common rules for paper and electronic documents of title, making it easier to finance and sell goods in transit. It doesn’t replace existing carrier-liability regimes.
 
     <div className="highlight_container calls_to_action">
       ### Calls to action
 
-      - <strong>Governments should consider joining the 2010 HNS Convention.</strong> It would give people and businesses harmed by hazardous cargo on their coasts or in their waters access to compensation, and UNCTAD could provide advice.
-      - <strong>Shipowners should arrange the required insurance before the Convention takes effect on 29 November 2027.</strong> Without it, they could lose access to major ports in countries that have joined.
-      - <strong>Policymakers should take part in the IMO’s work on who pays when alternative ship fuels cause harm.</strong> Use of these fuels is expected to grow as shipping works to cut its emissions.
-      - <strong>Flag states should apply the IMO’s new guidelines on registering ships.</strong> The guidelines could help them spot falsified documents and stop fraudulent registrations.
+      - <strong>UN member states are encouraged to accede to the 2010 HNS Convention.</strong> Policymakers should also take an active part in ongoing IMO work on damage from HNS, including alternative fuels, used to power or operate ships.
+      - <strong>Flag states – countries where ships are registered – are strongly encouraged to implement the IMO Guidelines on the Registration of Ships.</strong> This would strengthen maritime governance and help tackle fraudulent ship registration and registries.
+      - <strong>UN member states are encouraged to implement the non-mandatory MASS Code and take part in related IMO work.</strong> Experience gained from applying the code would inform a mandatory version, envisaged by 2030.
+      - <strong>UN member states are encouraged to accede to the BBNJ Agreement and to consider acceding to the Beijing Convention.</strong> Contracting states to the BBNJ Agreement should strengthen the effective implementation, enforcement and further development of the international maritime legal framework in line with its objectives.
+      - <strong>States considering ratification of the NCD Convention are advised to review domestic laws</strong> to ensure adequate mandatory minimum standards of carrier liability protect cargo claimants against potentially unfair standard contract terms, particularly in multimodal transport.
     </div>
-  </div>
-
-  {/*********************************************
-   *************** CHAPTER 6 *******************
-   *********************************************/}
-
-  <div className="container_chapter container_chapter_6">
-    <HeaderChapter
-      chapter_number={6}
-      image_url={props.meta.chapters[5].image_url}
-      pdf_url={props.meta.chapters[5].pdf_url}
-      subtitle={props.meta.chapters[5].subtitle}
-      title={props.meta.chapters[5].title}
-    />
-
-    <div className="highlight_container">
-      ### The takeaway
-
-      Takeaway placeholder.
-    </div>
-
-    Chapter 6 content placeholder.
   </div>
 </div>
 
