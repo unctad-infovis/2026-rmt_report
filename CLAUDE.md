@@ -35,7 +35,8 @@ The dev server is usually already running on port 8080. Check with `curl -s loca
 | `src/jsx/components/fuel/` | Chapter 3 focus chart (Figure III.11), D3 stacked bars. Values in `data.js` are rounded report figures; unrounded values are pending from the authors. |
 | `src/jsx/components/shared/FocusChartStory.jsx` | Shared scroll activation/layout for focus charts (copied from TDR). |
 | `public/assets/img/` | Images. Hero is `2026-rmt_report_main_v2.jpg`; `2026-rmt_report_main.jpg` is kept as the alternative hero. |
-| `scripts/postbuild.js` | Rewrites absolute asset paths in built HTML/CSS to relative ones. |
+| `scripts/postbuild.js` | Rewrites absolute asset paths in built HTML/CSS to relative ones; bumps the `version` counter in `public/assets/drupal-app.json` (and its `dist/assets/` copy) on every build. |
+| `public/assets/drupal-app.json` | Manifest Drupal reads to embed the app (title, `index`/`js`/`css` paths, `container` markup, auto-incremented `version`). Committed so the version counter persists. |
 | `dist/` | **Committed** build output. It is what gets deployed. |
 | `tmp/` | Local scratch files from the editors (source images, Word docs). Not ignored by git – never commit it. |
 
@@ -98,7 +99,7 @@ Standard release flow:
 ```sh
 npx biome check src
 npm run build                       # updates dist/
-git add dist src public/assets/img/<new files>   # never add tmp/ or package-lock.json unless dependencies changed
+git add dist src public/assets/img/<new files> public/assets/drupal-app.json   # never add tmp/ or package-lock.json unless dependencies changed
 git commit -m "Short description"   # no AI co-author trailers, no em dashes
 npm run push                        # pushes to origin and unctad
 npm run sync-gh-pages               # demo: subtree-pushes dist/ to gh-pages

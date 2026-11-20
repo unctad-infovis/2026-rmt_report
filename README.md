@@ -58,7 +58,10 @@ For developing please refer to `package.json`.
 ### Deployment
 
 * `npm run build` – production bundle into `dist/` (runs `scripts/postbuild.js` to
-  rewrite absolute HTML and CSS asset paths to relative). `dist/` is committed.
+  rewrite absolute HTML and CSS asset paths to relative, and to bump the `version`
+  counter in `public/assets/drupal-app.json`/`dist/assets/drupal-app.json`, the
+  manifest Drupal reads to embed the app – see "Files and folders" below).
+  `dist/` is committed.
 * `npm run push` – push `main` to both remotes: `origin` (GitHub) and `unctad` (Azure DevOps).
 * `npm run sync-gh-pages` – push `dist/` to the `gh-pages` branch for the live demo.
 * `npm run login` – Azure service-principal login (needs `AZURE_USER`, `AZURE_PW`, `AZURE_TENANT`).
@@ -81,7 +84,13 @@ All source code goes to folder `src`.
 * `src/jsx/components/crude/` – Chapter 1 focus chart (Figures I.9 and I.10), D3.
 * `src/jsx/components/fuel/` – Chapter 3 focus chart (Figure III.11, fuel costs as a share of import value), D3.
 * `src/jsx/components/shared/FocusChartStory.jsx` – shared scroll activation and layout for focus charts.
-* `scripts/postbuild.js` – makes built asset paths relative.
+* `scripts/postbuild.js` – makes built asset paths relative; bumps the `version`
+  counter in `public/assets/drupal-app.json` (and its `dist/assets/` copy) on
+  every build.
+* `public/assets/drupal-app.json` – the manifest Drupal reads to embed the app:
+  title, the `index`/`js`/`css` paths, the `container` markup, and an
+  auto-incremented `version`. Committed, since the `version` counter needs to
+  persist across builds.
 * `public/assets/img/` – images.
 
 ### Content driven by `meta.json`
