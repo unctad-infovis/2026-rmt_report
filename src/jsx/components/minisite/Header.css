@@ -4,19 +4,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     --un-column-width: 1350px;
-    margin: auto;
+    --chapter-cards-overlap: 200px;
+    margin: auto auto var(--chapter-cards-overlap);
     @media (max-width: 1399px) {
       --un-column-width: 1170px;
     }
     position: relative;
     z-index: 2;
-    &::before {
-      background: linear-gradient(90deg, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 56%) 35%, rgb(0 0 0 / 28%) 62%, transparent 85%);
-      content: '';
-      inset: 0;
-      pointer-events: none;
-      position: absolute;
-    }
     .container_header {
       align-content: space-between;
       box-sizing: border-box;
@@ -110,10 +104,13 @@
           display: grid;
           grid-template-columns: repeat(6, minmax(0, 170px));
           gap: 10px;
+          margin-bottom: calc(var(--chapter-cards-overlap) * -1);
           max-width: 1350px;
           overflow-x: auto;
           overscroll-behavior-inline: contain;
           padding: 0 0 8px;
+          position: relative;
+          z-index: 3;
           scroll-snap-type: x proximity;
           .chapter_card {
             --main-color: var(--un-color-blue-text-dark);
@@ -256,6 +253,9 @@
 }
 
 @media (max-width: 768px) {
+  #app-root-2026-rmt_report .app div.container_header_wrapper {
+    --chapter-cards-overlap: 0px;
+  }
   #app-root-2026-rmt_report .app div.container_header_wrapper .container_header {
     padding: 0 10px;
   }
