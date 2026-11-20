@@ -42,7 +42,7 @@ The dev server is usually already running on port 8080. Check with `curl -s loca
 ## Content conventions
 
 * Datawrapper charts are embedded with `<ChartDataWrapper chart_id="xxxxx" />` (from `@unctad-infovis/general-tools`). The Chapter 1 focus chart is a custom D3 component (`<ChartFocusCrude />`) instead. 
-* Status: Chapters 1–5 have the authors' copy (Word doc of 2026-11). Chapter 1 has Datawrapper charts `zyJGk` (I.1), `W5eCo` (I.7) and `3s2LW` (I.15) and the crude focus chart; Chapter 3 has the fuel focus chart (`<ChartFocusFuel />`). Datawrapper charts are placed for chapters 2–4 (QG0eK, eoY66, KGeBp, M9W2M, 1H5AZ, qLPPl, HKM7q; RM8XU is a Datawrapper version of III.11, replaced by `ChartFocusFuel`). Still missing: the `SideScrollingText` intros. Planned chapter pattern: `SideScrollingText` (chapter intro with background image and blue veil) → `HeaderChapter` → takeaway box (`.highlight_container`) → `InNumbers` data sheet → body copy and charts → calls to action (`.highlight_container.calls_to_action`).
+* Status: Chapters 1–5 have the authors' copy (Word doc of 2026-11). Chapter 1 has Datawrapper charts `zyJGk` (I.1), `W5eCo` (I.7) and `3s2LW` (I.15) and the crude focus chart; Chapter 3 has the fuel focus chart (`<ChartFocusFuel />`). Datawrapper charts are placed for chapters 2–4 (QG0eK, eoY66, KGeBp, M9W2M, 1H5AZ, qLPPl, HKM7q; RM8XU is a Datawrapper version of III.11, replaced by `ChartFocusFuel`). The `SideScrollingText` question texts are drafts by the developer, not editorial copy. Planned chapter pattern: `SideScrollingText` (chapter intro with background image and blue veil) → `HeaderChapter` → takeaway box (`.highlight_container`) → `InNumbers` data sheet → body copy and charts → calls to action (`.highlight_container.calls_to_action`).
 * `HeaderChapter` hides the subtitle when the title already contains it, and puts a line break before that part of the title (chapter 2).
 * `InNumbers` props: `headline`, `headlinePrefix`, `headlineUnit`, `headlineDecimals`, `headlineLabel` (screen-reader text), `headlineText`, plus one visual: `bars`, `pair` (two `CircleFlag` country codes) or `share`. `facts` take an `icon` key from the `ICONS` map in `InNumbers.jsx`.
 * Footer blocks render only when their content exists in `meta.json` → `footer` (video, language links, launch event, media links). Empty `url` values hide the item.
@@ -80,7 +80,7 @@ The dev server is usually already running on port 8080. Check with `curl -s loca
 Components and helpers come from the `un-init-project` monorepo, published to GitHub Packages:
 
 * `@unctad-infovis/general-tools` – `ButtonAnchor`, `ButtonShare`, `ChartDataWrapper`, `CircleFlag`, `Image`, `ProgressBar`, `Quote`, `RollingNumber`, `BackToTop`, `UNCTADSiteHeader`, helpers (`BasePath`/`resolveAsset`, `UseIsVisible`, `FormatNr`, …) and design tokens.
-* `@unctad-infovis/minisite-tools` – `Header`, `HeaderChapter`, `Footer`, `SideScrollingText`. This project uses the shared `SideScrollingText` (registered, not yet used) but has local, customised copies of `Header`, `HeaderChapter` and `Footer` in `src/jsx/components/minisite/`.
+* `@unctad-infovis/minisite-tools` – `Header`, `HeaderChapter`, `Footer`, `SideScrollingText`. This project uses the shared `SideScrollingText` (one before each chapter, with two question texts written from the chapter body copy; pending editorial approval) but has local, customised copies of `Header`, `HeaderChapter` and `Footer` in `src/jsx/components/minisite/`.
 
 Check these packages (and sibling projects) before creating a new component.
 
