@@ -274,9 +274,10 @@
         line-height: 1.1;
         max-width: var(--un-column-width);
         overflow-wrap: anywhere;
-        padding: 0;
+        padding: 0 clamp(48px, 12vw, 200px) 0 0;
         @media (max-width: 700px) {
           font-size: clamp(var(--un-font-size-xxl), 8vw, var(--un-font-size-xxxl));
+          padding-right: 48px;
         }
       }
     }
