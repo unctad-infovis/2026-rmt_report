@@ -14,7 +14,7 @@ const BASE_VIEW = { gulfUntil: null, redUntil: null, gulfOpacity: 1, redOpacity:
 const STAGES = [
   {
     key: 'introduction',
-    headline: 'The Persian Gulf ships over a third of seaborne crude oil',
+    headline: 'The Persian Gulf ships over a third of global seaborne crude oil',
     body: 'Before 28 February, its shipments are several times those moving east out of the Red Sea.',
     view: { ...BASE_VIEW, gulfUntil: '2026-02-27', redUntil: '2026-02-27' }
   },
@@ -27,7 +27,7 @@ const STAGES = [
   {
     key: 'red_sea',
     headline: 'Eastbound crude flows out of the Red Sea rise by two thirds',
-    body: 'Eastbound movements increased from around 390,000 to 640,000 tons per day. Separately, Saudi crude exports through Yanbu, on the Red Sea, roughly doubled.',
+    body: 'Eastbound movements increased from around 390,000 to 640,000 tons per day. Saudi crude exports through Yanbu, on the Red Sea, roughly doubled.',
     view: { ...BASE_VIEW, gulfOpacity: 0.25, baseline: true, marker: true, averages: true }
   },
   {
