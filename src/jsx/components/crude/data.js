@@ -218,6 +218,4 @@ export const AVERAGES = { before: 390, after: 640 };
 // Gulf recovery window. Its ends mark the June agreement and the July resumption of the conflict (approximate dates).
 export const RECOVERY = { from: '2026-06-14', to: '2026-07-09' };
 
-export const NOTE = 'Covers crude oil tankers of 95,000 deadweight tons and above, including Aframax, Suezmax and very large crude carriers.';
-
-export const CSV = ['Date,Persian Gulf outflows (thousand tons per day),Eastbound Red Sea (thousand tons per day)', ...DATA.map(row => row.join(','))].join('\n');
+export const NOTE = 'Covers crude oil tankers of 95,000 deadweight tons and above, including Aframax, Suezmax and very large crude carriers. Data to 26 July 2026.';

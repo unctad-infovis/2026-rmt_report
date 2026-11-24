@@ -80,6 +80,7 @@
       }
       .fuel_plot {
         display: block;
+        overflow: visible;
         .fuel_grid {
           opacity: 0;
           transition: opacity 400ms;
@@ -189,15 +190,6 @@
         margin-top: 20px;
         div + div {
           margin-top: 5px;
-        }
-        a {
-          color: var(--un-color-blue-text);
-          display: inline-block;
-          margin-top: 5px;
-          &:focus-visible {
-            outline: 2px solid var(--un-color-blue-darkest);
-            outline-offset: 2px;
-          }
         }
       }
     }

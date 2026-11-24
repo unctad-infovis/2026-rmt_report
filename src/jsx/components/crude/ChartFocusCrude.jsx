@@ -1,7 +1,7 @@
 import { area, bisector, curveLinear, line, scaleLinear, scaleUtc, utcFormat, utcMonth } from 'd3';
 import { useEffect, useId, useRef, useState } from 'react';
 import FocusChartStory from '../shared/FocusChartStory.jsx';
-import { AVERAGES, CSV, DATA, DISRUPTION_DATE, NOTE, RECOVERY } from './data.js';
+import { AVERAGES, DATA, DISRUPTION_DATE, NOTE, RECOVERY } from './data.js';
 
 import './ChartFocusCrude.css';
 
@@ -44,7 +44,6 @@ const SERIES = [
 
 const toDate = value => new Date(`${value}T00:00:00Z`);
 const dates = DATA.map(row => toDate(row[0]));
-const dayFormat = utcFormat('%-d %B %Y');
 const numberFormat = value => Math.round(value).toLocaleString('en-US').replace(/,/g, ' ');
 const preIndex = dates.findIndex(date => date >= toDate(DISRUPTION_DATE)) - 1;
 const gulfBaseline = DATA.slice(0, preIndex + 1).reduce((sum, row) => sum + row[1], 0) / (preIndex + 1);
@@ -54,18 +53,14 @@ const lastIndexUntil = until => (until ? Math.max(0, dateBisector(dates, toDate(
 
 const CrudeChart = ({ step }) => {
   const figureRef = useRef(null);
-  const tooltipId = useId();
-  const [selectedIndex, setSelectedIndex] = useState(null);
+  const clipPrefix = useId();
   const [width, setWidth] = useState(0);
   const [viewportHeight, setViewportHeight] = useState(() => window.innerHeight);
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   useEffect(() => {
     const observer = new ResizeObserver(([entry]) => setWidth(Math.floor(entry.contentRect.width)));
     observer.observe(figureRef.current);
-    const onResize = () => {
-      setViewportHeight(window.innerHeight);
-      setSelectedIndex(null);
-    };
+    const onResize = () => setViewportHeight(window.innerHeight);
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const onMotion = () => setReducedMotion(media.matches);
     window.addEventListener('resize', onResize);
@@ -76,11 +71,6 @@ const CrudeChart = ({ step }) => {
       media.removeEventListener('change', onMotion);
     };
   }, []);
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Reset interaction when the chart context changes.
-  useEffect(() => {
-    setSelectedIndex(null);
-  }, [step, width, viewportHeight, reducedMotion]);
 
   const hasData = DATA.length > 0;
   const state = reducedMotion ? STAGES.length - 1 : step;
@@ -99,9 +89,6 @@ const CrudeChart = ({ step }) => {
   const yTicks = y.ticks(5);
   const monthTicks = x.ticks(utcMonth.every(chartWidth < 400 ? 2 : 1));
   const drawnUntil = { gulf: lastIndexUntil(view.gulfUntil), red_sea: lastIndexUntil(view.redUntil) };
-  const maxDrawn = Math.max(drawnUntil.gulf, drawnUntil.red_sea);
-  const selectedRow = selectedIndex === null ? null : DATA[selectedIndex];
-  const tooltipSeries = selectedRow ? SERIES.filter(series => selectedIndex <= drawnUntil[series.key]) : [];
   const disruptionX = x(toDate(DISRUPTION_DATE));
   const gapEnd = view.gapUntil ? lastIndexUntil(view.gapUntil) : preIndex;
   const gapIndexes = dates.map((_, index) => index).filter(index => index >= preIndex && index <= gapEnd);
@@ -117,25 +104,7 @@ const CrudeChart = ({ step }) => {
     .y1(index => y(Math.max(DATA[index][2], AVERAGES.before)))(gapIndexes);
   const agreementX = x(toDate(RECOVERY.from));
   const resumptionX = x(toDate(RECOVERY.to));
-  const tooltipWidth = Math.min(260, chartWidth);
-
-  const selectPointerDate = event => {
-    const bounds = event.currentTarget.ownerSVGElement.getBoundingClientRect();
-    const chartX = ((event.clientX - bounds.left) * chartWidth) / bounds.width;
-    setSelectedIndex(Math.max(0, Math.min(maxDrawn, dateBisector(dates, x.invert(chartX)))));
-  };
-  const handleKeyDown = event => {
-    if (event.key === 'Escape') {
-      setSelectedIndex(null);
-      return;
-    }
-    const current = selectedIndex ?? 0;
-    const next = { ArrowLeft: current - 1, ArrowRight: current + 1, PageDown: current - 7, PageUp: current + 7, Home: 0, End: maxDrawn }[event.key];
-    if (next !== undefined) {
-      event.preventDefault();
-      setSelectedIndex(Math.max(0, Math.min(maxDrawn, next)));
-    }
-  };
+  const narrow = chartWidth < 520;
 
   return (
     <figure className="crude_chart" ref={figureRef} data-chart-state={state}>
@@ -194,8 +163,17 @@ const CrudeChart = ({ step }) => {
             </g>
             <g className={`crude_baseline${view.baseline ? ' visible' : ''}`}>
               <line x1={plotLeft} x2={plotRight} y1={y(gulfBaseline)} y2={y(gulfBaseline)} />
-              <text x={(disruptionX + plotRight) / 2 - (plotRight - disruptionX) * 0.1} y={y(gulfBaseline) + 15} textAnchor="middle">
-                Gulf level before the disruption
+              <text x={narrow ? (disruptionX + resumptionX) / 2 : (disruptionX + plotRight) / 2 - (plotRight - disruptionX) * 0.1} y={y(gulfBaseline) + 15} textAnchor="middle">
+                {narrow ? (
+                  <>
+                    <tspan x={(disruptionX + resumptionX) / 2}>Gulf level before</tspan>
+                    <tspan x={(disruptionX + resumptionX) / 2} dy="13">
+                      the disruption
+                    </tspan>
+                  </>
+                ) : (
+                  'Gulf level before the disruption'
+                )}
               </text>
             </g>
             <g className={`crude_marker${view.marker ? ' visible' : ''}`}>
@@ -246,7 +224,7 @@ const CrudeChart = ({ step }) => {
               const total = lengths.reduce((sum, length) => sum + length, 0) || 1;
               const drawn = lengths.slice(0, drawnUntil[series.key]).reduce((sum, length) => sum + length, 0);
               const opacity = series.key === 'gulf' ? view.gulfOpacity : view.redOpacity;
-              const clipId = `${tooltipId}-${series.key}`.replace(/:/g, '');
+              const clipId = `${clipPrefix}-${series.key}`.replace(/:/g, '');
               const dashed = series.key === 'red_sea';
               return (
                 <g key={series.key} className={`crude_series ${series.key}`} style={{ '--series-opacity': opacity }}>
@@ -269,54 +247,9 @@ const CrudeChart = ({ step }) => {
                 around 640 000 tons
               </text>
             </g>
-            {selectedRow && (
-              <g className="crude_tracking">
-                <line x1={x(dates[selectedIndex])} x2={x(dates[selectedIndex])} y1={plotTop} y2={plotBottom} />
-                {tooltipSeries.map(series => (
-                  <circle key={series.key} className={series.key} cx={x(dates[selectedIndex])} cy={y(selectedRow[series.column])} r="5" />
-                ))}
-              </g>
-            )}
-            <rect
-              className="crude_hit_area"
-              x={plotLeft}
-              y={plotTop}
-              width={plotRight - plotLeft}
-              height={plotBottom - plotTop}
-              fill="transparent"
-              role="slider"
-              tabIndex={0}
-              aria-label="Explore daily crude oil movements. Use left and right arrow keys to change day, Page Up or Page Down to move a week, Home or End to jump, and Escape to dismiss."
-              aria-valuemin={0}
-              aria-valuemax={maxDrawn}
-              aria-valuenow={selectedIndex ?? 0}
-              aria-valuetext={selectedRow ? `${dayFormat(dates[selectedIndex])}. ${tooltipSeries.map(series => `${series.label}: ${numberFormat(selectedRow[series.column])} thousand tons per day`).join('. ')}` : dayFormat(dates[0])}
-              aria-describedby={selectedRow ? tooltipId : undefined}
-              onPointerMove={selectPointerDate}
-              onPointerDown={selectPointerDate}
-              onPointerLeave={event => {
-                if (event.pointerType !== 'touch') setSelectedIndex(null);
-              }}
-              onPointerCancel={() => setSelectedIndex(null)}
-              onFocus={() => setSelectedIndex(index => index ?? 0)}
-              onBlur={() => setSelectedIndex(null)}
-              onKeyDown={handleKeyDown}
-            />
           </svg>
         ) : (
           <p className="crude_pending">Data to be added.</p>
-        )}
-        {selectedRow && (
-          <div className="crude_tooltip" id={tooltipId} role="tooltip" style={{ left: Math.max(0, Math.min(x(dates[selectedIndex]) - tooltipWidth / 2, chartWidth - tooltipWidth)) }}>
-            <strong>{dayFormat(dates[selectedIndex])}</strong>
-            {tooltipSeries.map(series => (
-              <div className={`tooltip_row ${series.key}`} key={series.key}>
-                <span className="tooltip_key" />
-                <span>{series.label}</span>
-                <strong>{numberFormat(selectedRow[series.column])}</strong>
-              </div>
-            ))}
-          </div>
         )}
       </div>
       <div className="crude_meta">
@@ -326,11 +259,6 @@ const CrudeChart = ({ step }) => {
         <div>
           <em>Note:</em> {NOTE}
         </div>
-        {hasData && (
-          <a href={`data:text/csv;charset=utf-8,${encodeURIComponent(CSV)}`} download="rmt2026_figures_I_9_I_10.csv">
-            Get the data
-          </a>
-        )}
       </div>
     </figure>
   );

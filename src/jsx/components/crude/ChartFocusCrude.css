@@ -81,64 +81,10 @@
           font-size: var(--un-font-size-xs);
           margin: 24px 0;
         }
-        .crude_tooltip {
-          background: #fff;
-          border: 1px solid var(--un-color-grey-light);
-          box-sizing: border-box;
-          color: #000;
-          font-size: var(--un-font-size-xxxs);
-          line-height: var(--un-line-height-normal);
-          max-width: 100%;
-          padding: 8px 10px;
-          pointer-events: none;
-          position: absolute;
-          top: 8px;
-          width: 260px;
-          z-index: 3;
-          .tooltip_row {
-            align-items: center;
-            display: flex;
-            gap: 6px;
-            margin-top: 5px;
-            .tooltip_key {
-              background: var(--un-color-blue);
-              flex-shrink: 0;
-              height: 3px;
-              width: 14px;
-            }
-            &.red_sea .tooltip_key {
-              background: var(--un-color-yellow);
-            }
-            strong {
-              margin-left: auto;
-            }
-          }
-        }
       }
       .crude_plot {
         display: block;
-        .crude_tracking {
-          pointer-events: none;
-          line {
-            stroke: var(--un-color-grey-darkest);
-            stroke-dasharray: 3 3;
-          }
-          circle {
-            fill: var(--un-color-blue);
-            stroke: #fff;
-            stroke-width: 2px;
-            &.red_sea {
-              fill: var(--un-color-grey-dark);
-            }
-          }
-        }
-        .crude_hit_area {
-          cursor: crosshair;
-          &:where(:focus-visible) {
-            outline: 2px solid var(--un-color-blue-darkest);
-            outline-offset: 2px;
-          }
-        }
+        overflow: visible;
         .crude_grid {
           line {
             stroke: none;
@@ -274,15 +220,6 @@
         div + div {
           margin-top: 5px;
         }
-        a {
-          color: var(--un-color-blue-text);
-          display: inline-block;
-          margin-top: 5px;
-          &:focus-visible {
-            outline: 2px solid var(--un-color-blue-darkest);
-            outline-offset: 2px;
-          }
-        }
       }
     }
   }
@@ -315,11 +252,6 @@
         .crude_chart {
           max-height: none;
           overflow: visible;
-          .crude_tooltip,
-          .crude_tracking,
-          .crude_hit_area {
-            display: none;
-          }
           .crude_plot .crude_series {
             opacity: 1;
             transition: none;

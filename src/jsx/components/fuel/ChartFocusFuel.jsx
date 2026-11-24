@@ -1,7 +1,7 @@
 import { scaleLinear } from 'd3';
 import { useEffect, useRef, useState } from 'react';
 import FocusChartStory from '../shared/FocusChartStory.jsx';
-import { BENCHMARK, CSV, GROUPS, NOTE } from './data.js';
+import { BENCHMARK, GROUPS, NOTE } from './data.js';
 
 import './ChartFocusFuel.css';
 
@@ -21,7 +21,7 @@ const STAGES = [
     key: 'final_after',
     headline: 'Higher marine fuel prices add to the import bill',
     body: 'After the disruption, fuel for the final leg cost 2.6% of import value in least developed countries, compared with 1.3% worldwide and 1.2% in small island developing states.',
-    view: { increase: true, finalLine: true, finalOpacity: 1, wholeBars: 0, wholeLine: false, note: 'final_sids', benchmark: false }
+    view: { increase: true, finalLine: true, finalOpacity: 1, wholeBars: 0, wholeLine: false, note: null, benchmark: false }
   },
   {
     key: 'whole_world',
@@ -49,7 +49,6 @@ const STAGES = [
   }
 ];
 const NOTES = {
-  final_sids: { group: 0, bar: 1, text: 'Below average' },
   whole_sids: { group: 1, bar: 1, text: 'Above average' },
   whole_ldcs: { group: 1, bar: 2, text: 'Highest' }
 };
@@ -200,10 +199,10 @@ const FuelChart = ({ step }) => {
             {format(BENCHMARK.base)}
           </text>
           <text className="fuel_inside dark" x={benchmarkX + benchmarkWidth + 8} y={yBenchmark(BENCHMARK.base + BENCHMARK.increase / 2) + 4}>
-            +{BENCHMARK.increase.toFixed(1)} points
+            +{BENCHMARK.increase.toFixed(1)} % points
           </text>
           <text className="fuel_category" x={benchmarkX + benchmarkWidth / 2} y={plotBottom + 16} textAnchor="middle">
-            Total maritime transport cost, 2021
+            Total maritime transport cost, baseline
           </text>
         </g>
       </svg>
@@ -214,9 +213,6 @@ const FuelChart = ({ step }) => {
         <div>
           <em>Note:</em> {NOTE}
         </div>
-        <a href={`data:text/csv;charset=utf-8,${encodeURIComponent(CSV)}`} download="rmt2026_figure_III_11.csv">
-          Get the data
-        </a>
       </div>
     </figure>
   );

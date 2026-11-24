@@ -28,5 +28,3 @@ export const BENCHMARK = { base: 11.1, increase: 1.4 };
 
 export const NOTE =
   'The final-voyage measure covers only the maritime voyage delivering goods to the importing economy, directly from the economy of origin or through a transshipment port. The whole-journey measure also includes preceding maritime voyages from the origin. The two measures are identical for direct shipping but differ for transshipped goods. Total maritime transport costs (last step) are a 2021 UNCTAD estimate. SIDS: small island developing states. LDCs: least developed countries. See the technical annex, sections 1 and 2, for the estimation methodology.';
-
-export const CSV = ['Voyage,Economy group,Before the disruption,After the disruption', ...GROUPS.flatMap(group => group.bars.map(bar => [group.label, bar.label, bar.before, bar.total].join(',')))].join('\n');

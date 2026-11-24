@@ -53,8 +53,10 @@ const Bars = ({ bars, caption }) => {
       <ul aria-label={caption}>
         {bars.map(bar => (
           <li className={bar.highlight ? 'highlight' : undefined} key={bar.label}>
-            <span className="bar_value">{bar.text ?? bar.value.toFixed(1)}</span>
-            <span className="bar" style={{ '--bar-height': `${(bar.value / maxBar) * 100}%` }} />
+            <span className="bar_area">
+              <span className="bar_value">{bar.text ?? bar.value.toFixed(1)}</span>
+              <span className="bar" style={{ '--bar-height': `${(bar.value / maxBar) * 128}px` }} />
+            </span>
             <span className="bar_label">{bar.label}</span>
           </li>
         ))}
