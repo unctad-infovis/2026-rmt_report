@@ -198,8 +198,11 @@ const FuelChart = ({ step }) => {
           <text className="fuel_inside" x={benchmarkX + benchmarkWidth / 2} y={yBenchmark(BENCHMARK.base / 2) + 4} textAnchor="middle">
             {format(BENCHMARK.base)}
           </text>
-          <text className="fuel_inside dark" x={benchmarkX + benchmarkWidth + 8} y={yBenchmark(BENCHMARK.base + BENCHMARK.increase / 2) + 4}>
-            +{BENCHMARK.increase.toFixed(1)} % points
+          <text className="fuel_inside dark" x={benchmarkX + benchmarkWidth + 8} y={yBenchmark(BENCHMARK.base + BENCHMARK.increase / 2) - 3}>
+            <tspan x={benchmarkX + benchmarkWidth + 8}>+{BENCHMARK.increase.toFixed(1)} percentage</tspan>
+            <tspan x={benchmarkX + benchmarkWidth + 8} dy="1.2em">
+              points
+            </tspan>
           </text>
           <text className="fuel_category" x={benchmarkX + benchmarkWidth / 2} y={plotBottom + 16} textAnchor="middle">
             Total maritime transport cost, baseline
