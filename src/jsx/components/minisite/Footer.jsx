@@ -70,7 +70,7 @@ function Footer({ content = {}, reportUrl = '' }) {
                 </div>
               )}
               {pressVideos.length > 0 && (
-                <section className="anchor_press press_conference" aria-labelledby="press-conference-heading">
+                <section className="press_conference" aria-labelledby="press-conference-heading">
                   <h3 id="press-conference-heading">Watch the press conference</h3>
                   <div className="press_video_grid">
                     {pressVideos.map(video => (
@@ -80,7 +80,7 @@ function Footer({ content = {}, reportUrl = '' }) {
                 </section>
               )}
               {launch_event_url && pressVideos.length === 0 && (
-                <div>
+                <div className="anchor_videos">
                   <h4>Watch the launch event</h4>
                   <VideoEmbed title={launch_event_title || 'Launch event'} url={launch_event_url} />
                   {launch_event_title && <p>{launch_event_title}</p>}

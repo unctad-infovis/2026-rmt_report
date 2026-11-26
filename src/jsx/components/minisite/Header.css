@@ -93,6 +93,8 @@
           }
         }
         .container_button_download {
+          --main-color: var(--un-color-blue-text-dark);
+          --secondary-color: var(--un-color-blue-darkest);
           display: inline-block;
           p {
             display: inline-block;

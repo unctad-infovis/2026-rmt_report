@@ -38,12 +38,21 @@
   ],
   "footer": {
     "language_links": [],
-    "launch_event_title": "",
+    "launch_event_title": "Review of Maritime Transport 2026 – Press conference",
     "launch_event_url": "",
-    "media_links": [],
+    "media_links": [
+      {
+        "label": "Photos",
+        "url": "https://unctadmedia.org/gallery/2026-11-26/launch-of-the-review-of-maritime-transport-2026"
+      },
+      {
+        "label": "Digital assets",
+        "url": "https://trello.com/c/f5QbzD8m"
+      }
+    ],
     "press_videos": [],
-    "video_title": "",
-    "video_url": ""
+    "video_title": "Review of Maritime Transport 2026",
+    "video_url": "https://player.vimeo.com/video/1250122106"
   },
   "full_report_cover_url": "assets/img/2026-rmt_report_full_cover.jpg?v=1",
   "full_report_languages": [],

@@ -130,6 +130,7 @@
 }
 
 #app-root-2026-rmt_report .app .footer_container {
+  .anchor_videos,
   .press_conference {
     scroll-margin-top: calc(var(--drupal-displace-offset-top, 0px) + 24px);
   }
